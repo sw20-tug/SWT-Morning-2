@@ -7,6 +7,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+
+    <string name="ttt_menu_fragment_label">TTT Menu</string>
+    <string name="ttt_game_fragment_label">TTT Game</string>
+
     <string name="welcome_screen_headline">Games Collection</string>
     <string name="tic_tac_toe_text">Tic Tac Toe</string>
     <string name="hangman_text">Hangman</string>
