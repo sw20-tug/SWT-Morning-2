@@ -29,9 +29,8 @@ public class MainMenuFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "tic tac toe button pressed");
-                // todo start appropriate game later
-                //NavHostFragment.findNavController(com.swt20.swt_morning2.MainMenuFragment.this)
-                //        .navigate(R.id.action_mainMenuFragment_to_placeholder);
+                NavHostFragment.findNavController(com.swt20.swt_morning2.MainMenuFragment.this)
+                        .navigate(R.id.action_mainMenuFragment_to_TicTacToeMenu);
             }
         });
 
