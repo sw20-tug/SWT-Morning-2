@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.swt20.swt_morning2"
         minSdkVersion 24
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
