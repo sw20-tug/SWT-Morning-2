@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenuFragment">
+
+    <TextView
+        android:id="@+id/MainMenuTextView"
+        android:layout_width="307dp"
+        android:layout_height="70dp"
+        android:text="@string/welcome_screen_headline"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/ticTacToeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/ticTacToeButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/tictactoe"
+        app:layout_constraintTop_toBottomOf="@+id/MainMenuTextView"
+        app:layout_constraintBottom_toTopOf="@+id/hangmanButton"
+        app:layout_constraintEnd_toStartOf="@id/ticTacToeText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/hangmanButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/hangman"
+        app:layout_constraintTop_toBottomOf="@id/ticTacToeButton"
+        app:layout_constraintBottom_toTopOf="@id/whiteTilesButton"
+        app:layout_constraintEnd_toStartOf="@id/hangmanText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/whiteTilesButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/whitetiles"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/whiteTilesText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hangmanButton"/>
+
+    <TextView
+        android:id="@+id/ticTacToeText"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/tic_tac_toe_text"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/MainMenuTextView"
+        app:layout_constraintBottom_toTopOf="@id/hangmanText"
+        app:layout_constraintStart_toEndOf="@id/ticTacToeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <TextView
+        android:id="@+id/hangmanText"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/hangman_text"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/ticTacToeText"
+        app:layout_constraintBottom_toTopOf="@id/whiteTilesText"
+        app:layout_constraintStart_toEndOf="@id/hangmanButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <TextView
+        android:id="@+id/whiteTilesText"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:text="@string/white_tiles_text"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/whiteTilesButton"
+        app:layout_constraintTop_toBottomOf="@id/hangmanText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
