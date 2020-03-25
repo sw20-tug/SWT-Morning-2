@@ -10,6 +10,10 @@
     <string name="hello_second_fragment">Hallo zweites Fragment. Argument: %1$s</string>
     <string name="snackbar_text">Ersetze mit deiner eigenen Aktion</string>
 
+
+    <string name="ttt_menu_fragment_label">TTT Menu</string>
+    <string name="ttt_game_fragment_label">TTT Game</string>
+
     <string name="welcome_screen_headline">Spiele Sammlung</string>
     <string name="tic_tac_toe_text">Tic Tac Toe</string>
     <string name="hangman_text">Hangman</string>

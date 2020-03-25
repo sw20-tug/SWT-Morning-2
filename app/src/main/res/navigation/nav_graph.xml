@@ -12,4 +12,25 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/TicTacToeMenuFragment"
+        android:name="com.swt20.swt_morning2.TicTacToeMenuFragment"
+        android:label="@string/ttt_menu_fragment_label"
+        tools:layout="@layout/tictactoe_menu">
+
+        <action
+            android:id="@+id/action_Menu_to_Game"
+            app:destination="@id/TicTacToeGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/TicTacToeGameFragment"
+        android:name="com.swt20.swt_morning2.TicTacToeGameFragment"
+        android:label="@string/ttt_game_fragment_label"
+        tools:layout="@layout/tictactoe_game">
+
+        <action
+            android:id="@+id/action_Game_to_Menu"
+            app:destination="@id/TicTacToeMenuFragment" />
+    </fragment>
+
 </navigation>
