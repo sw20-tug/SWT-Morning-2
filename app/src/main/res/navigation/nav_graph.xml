@@ -10,6 +10,9 @@
         android:label="fragment_main_menu"
         tools:layout="@layout/fragment_main_menu" >
 
+        <action
+            android:id="@+id/action_mainMenuFragment_to_TicTacToeMenu"
+            app:destination="@id/TicTacToeMenuFragment" />
     </fragment>
 
     <fragment
@@ -21,6 +24,9 @@
         <action
             android:id="@+id/action_Menu_to_Game"
             app:destination="@id/TicTacToeGameFragment" />
+        <action
+            android:id="@+id/action_Menu_to_MainMenu"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/TicTacToeGameFragment"

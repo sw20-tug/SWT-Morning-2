@@ -10,5 +10,16 @@
         android:id="@+id/ttt_menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start game" />
+        android:text="start game"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/ttt_menu_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="Back to main menu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttt_menu_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
