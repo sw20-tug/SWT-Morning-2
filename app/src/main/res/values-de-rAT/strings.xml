@@ -6,9 +6,6 @@
     <string name="second_fragment_label">Zweites Fragment</string>
     <string name="next">Weiter</string>
     <string name="previous">Zurück</string>
-    <string name="hello_first_fragment">Hallo erstes Fragment</string>
-    <string name="hello_second_fragment">Hallo zweites Fragment. Argument: %1$s</string>
-    <string name="snackbar_text">Ersetze mit deiner eigenen Aktion</string>
 
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
