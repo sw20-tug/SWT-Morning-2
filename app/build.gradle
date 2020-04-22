@@ -1,4 +1,28 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+
+jacoco {
+    toolVersion = "0.8.4"
+    reportsDir = file("$buildDir/reports")
+}
+
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled false
+        html.enabled true
+        csv.enabled false
+    }
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
 
 android {
     compileSdkVersion 29
