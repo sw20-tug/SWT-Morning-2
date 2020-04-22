@@ -1,10 +1,13 @@
 package com.swt20.swt_morning2;
 
+import android.content.res.Resources;
+import android.icu.text.AlphabeticIndex;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,7 +22,15 @@ public class MainMenuFragment extends Fragment{
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
+        ScoreTracker score = new ScoreTracker(view.getContext());
+        String text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.TICTACTOE);
+        ((TextView)view.findViewById(R.id.ticTacToeScore)).setText(text);
+        text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.HANGMAN);
+        ((TextView)view.findViewById(R.id.hangmanScore)).setText(text);
+        text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.TILES);
+        ((TextView)view.findViewById(R.id.whiteTilesScore)).setText(text);
+        return view;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
