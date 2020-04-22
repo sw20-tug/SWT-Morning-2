@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: findbugs
-        path: app/build/reports/findbugs/*.html
+        path: app/build/reports/findbugs/
     - name: Upload Findbugs Report
       if: always()
       uses: actions/upload-artifact@v1
