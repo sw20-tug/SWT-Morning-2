@@ -10,6 +10,8 @@
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
+    <string name="ttt_menu_start_game">Start Game</string>
+
 
     <string name="welcome_screen_headline">Games Collection</string>
     <string name="tic_tac_toe_text">TicTacToe</string>
