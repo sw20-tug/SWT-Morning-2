@@ -7,6 +7,7 @@
     tools:context=".TicTacToeGameFragment">
 
     <TableLayout
+        android:id="@+id/ttt_game_field"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -15,7 +16,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView7"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -25,7 +25,6 @@
                 android:contentDescription="@string/tic_tac_toe_7" />
 
             <ImageView
-                android:id="@+id/imageView8"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -35,7 +34,6 @@
                 android:contentDescription="@string/tic_tac_toe_8"/>
 
             <ImageView
-                android:id="@+id/imageView9"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -51,7 +49,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView5"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -61,7 +58,6 @@
                 android:contentDescription="@string/tic_tac_toe_5"/>
 
             <ImageView
-                android:id="@+id/imageView4"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -71,7 +67,6 @@
                 android:contentDescription="@string/tic_tac_toe_4"/>
 
             <ImageView
-                android:id="@+id/imageView6"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -86,7 +81,6 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -96,7 +90,6 @@
                 android:contentDescription="@string/tic_tac_toe_1"/>
 
             <ImageView
-                android:id="@+id/imageView3"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:visibility="visible"
@@ -106,7 +99,6 @@
                 android:contentDescription="@string/tic_tac_toe_3"/>
 
             <ImageView
-                android:id="@+id/imageView2"
                 android:layout_width="90dp"
                 android:layout_height="79dp"
                 android:clickable="true"

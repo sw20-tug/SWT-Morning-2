@@ -4,32 +4,18 @@ public class TicTacToeGameLogic {
 
     public class Player {
 
-        private String name;
-        private String colour;
+        private int res_id;
 
-        public Player(String name) {
-            this.name = name;
+        public Player(int res_id) {
+            this.res_id = res_id;
         }
 
-        public Player(String name, String colour) {
-            this(name);
-            this.colour = colour;
+        public int getResId() {
+            return res_id;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getColour() {
-            return colour;
-        }
-
-        public void setColour(String colour) {
-            this.colour = colour;
+        public void setResId(int res_id) {
+            this.res_id = res_id;
         }
 
     }
@@ -56,24 +42,19 @@ public class TicTacToeGameLogic {
 
 
     private Player first, second;
-    private Cell[] cells = new Cell[9];
+    private Cell[][] cells = new Cell[3][3];
     private int turnCount = 0;
 
-    public TicTacToeGameLogic(String firstPlayer, String secondPlayer) {
-        this.first = new Player(firstPlayer);
-        this.second = new Player(secondPlayer);
-
-        for (int i = 0; i < cells.length; i++) {
-            cells[i] = new Cell();
-        }
+    public TicTacToeGameLogic(int first_player_res_id, int second_player_res_id) {
+        this.first = new Player(first_player_res_id);
+        this.second = new Player(second_player_res_id);
+        for (int i = 0; i < 9; i++) cells[i % 3][i / 3] = new Cell();
     }
 
     private boolean assign_cell(int x, int y, Player currentPlayer) {
-        try {
-            return cells[getIndex(x, y)].occupied_by(currentPlayer);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return false;
-        }
+        Cell currentCell = getCell(x, y);
+        if (currentCell == null) return false;
+        return currentCell.occupied_by(currentPlayer);
     }
 
     public boolean turn(int x, int y) {
@@ -83,10 +64,21 @@ public class TicTacToeGameLogic {
         return valid_play;
     }
 
-    private int getIndex(int x, int y) {
-        return 3 * x + y;
+    public Player getFirst() {
+        return first;
     }
 
+    public Player getSecond() {
+        return second;
+    }
+
+    public Cell getCell(int x, int y){
+        try {
+            return cells[x][y];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return null;
+        }
+    }
 }
 
 
