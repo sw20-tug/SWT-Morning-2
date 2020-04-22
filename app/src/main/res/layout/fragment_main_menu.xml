@@ -55,39 +55,77 @@
     <TextView
         android:id="@+id/ticTacToeText"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/tic_tac_toe_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/ticTacToeScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ticTacToeButton"
+        app:layout_constraintTop_toBottomOf="@id/MainMenuTextView"
+        app:layout_constraintTop_toTopOf="@id/ticTacToeButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/ticTacToeScore"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         android:text="@string/tic_tac_toe_text"
         android:textAlignment="center"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/MainMenuTextView"
-        app:layout_constraintBottom_toTopOf="@id/hangmanText"
-        app:layout_constraintStart_toEndOf="@id/ticTacToeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="228dp" />
+        app:layout_constraintStart_toEndOf="@id/ticTacToeButton"
+        app:layout_constraintTop_toBottomOf="@id/ticTacToeText" />
 
     <TextView
         android:id="@+id/hangmanText"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/hangman_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/hangmanScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/hangmanButton"
+        app:layout_constraintTop_toBottomOf="@id/ticTacToeScore"
+        app:layout_constraintTop_toTopOf="@id/hangmanButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/hangmanScore"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:gravity="center"
         android:text="@string/hangman_text"
         android:textAlignment="center"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/ticTacToeText"
-        app:layout_constraintBottom_toTopOf="@id/whiteTilesText"
-        app:layout_constraintStart_toEndOf="@id/hangmanButton"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="228dp" />
+        app:layout_constraintStart_toEndOf="@id/hangmanButton"
+        app:layout_constraintTop_toBottomOf="@id/hangmanText" />
 
     <TextView
         android:id="@+id/whiteTilesText"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="75dp"
+        android:gravity="bottom|center_horizontal"
         android:text="@string/white_tiles_text"
-        android:textAlignment="center"
-        android:gravity="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/whiteTilesButton"
-        app:layout_constraintTop_toBottomOf="@id/hangmanText" />
+        app:layout_constraintTop_toBottomOf="@id/hangmanScore"
+        app:layout_constraintTop_toTopOf="@id/whiteTilesButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/whiteTilesScore"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:gravity="center"
+        android:text="@string/white_tiles_text"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/hangmanButton"
+        app:layout_constraintTop_toBottomOf="@id/whiteTilesText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
