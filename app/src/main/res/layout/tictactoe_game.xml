@@ -21,7 +21,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_7" />
 
             <ImageView
                 android:id="@+id/imageView8"
@@ -30,7 +31,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_8"/>
 
             <ImageView
                 android:id="@+id/imageView9"
@@ -39,7 +41,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_9"/>
 
         </TableRow>
 
@@ -54,7 +57,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_5"/>
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -63,7 +67,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_4"/>
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -72,7 +77,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_6"/>
         </TableRow>
 
         <TableRow
@@ -86,7 +92,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_1"/>
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -95,7 +102,8 @@
                 android:visibility="visible"
                 android:clickable="true"
                 android:focusable="true"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_3"/>
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -104,7 +112,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:visibility="visible"
-                tools:srcCompat="@drawable/empty" />
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_2"/>
 
         </TableRow>
 
@@ -116,7 +125,7 @@
                 android:id="@+id/ttt_game_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="back" />
+                android:text="@string/back" />
         </TableRow>
 
     </TableLayout>

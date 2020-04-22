@@ -7,6 +7,12 @@ jacoco {
     reportsDir = file("$buildDir/reports")
 }
 
+android {
+    lintOptions {
+        disable 'IconLocation'
+    }
+}
+
 task codeCoverageReport(type: JacocoReport) {
     executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
@@ -54,7 +60,7 @@ android {
     defaultConfig {
         applicationId "com.swt20.swt_morning2"
         minSdkVersion 24
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
