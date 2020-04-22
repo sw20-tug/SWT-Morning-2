@@ -15,10 +15,8 @@ jobs:
         java-package: jdk
     - name: Build with Gradle
       run: ./gradlew build jacocoTestReport
-    - name: Prepare Artifacts
-      run: mkdir artifacts && cat app/build/reports/jacocoTestDebugUnitTestReport/html/index.html > artifacts/jacoco.html
-    - name: Upload Artifacts
+    - name: Upload Jacoco Artifact
       uses: actions/upload-artifact@v1
       with:
-        name: reports
-        path: artifacts
+        name: jacoco
+        path: app/build/reports/jacocoTestDebugUnitTestReport/html/
