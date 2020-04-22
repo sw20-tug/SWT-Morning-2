@@ -1,17 +1,22 @@
 name: Android CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: set up JDK 1.9
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: set up JDK 1.8
       uses: actions/setup-java@v1
       with:
-        java-version: 1.9
+        java-version: 1.8
+        java-package: jdk
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build jacocoTestReport
+    - name: Upload Jacoco Artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: jacoco
+        path: app/build/reports/jacocoTestDebugUnitTestReport/html/
