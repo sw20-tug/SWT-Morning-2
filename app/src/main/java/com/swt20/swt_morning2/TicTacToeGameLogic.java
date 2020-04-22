@@ -27,7 +27,7 @@ public class TicTacToeGameLogic {
             this.owner = null;
         }
 
-        public boolean occupied_by(Player owner) {
+        public boolean occupy(Player owner) {
             if (this.owner == null) {
                 this.owner = owner;
                 return true;
@@ -54,7 +54,7 @@ public class TicTacToeGameLogic {
     private boolean assign_cell(int x, int y, Player currentPlayer) {
         Cell currentCell = getCell(x, y);
         if (currentCell == null) return false;
-        return currentCell.occupied_by(currentPlayer);
+        return currentCell.occupy(currentPlayer);
     }
 
     public boolean turn(int x, int y) {
