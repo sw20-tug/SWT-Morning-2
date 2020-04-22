@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
+apply plugin: 'com.novoda.static-analysis'
 
 jacoco {
     toolVersion = "0.8.4"
@@ -22,6 +23,21 @@ task codeCoverageReport(type: JacocoReport) {
 
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
+}
+
+staticAnalysis {
+    penalty {
+        maxErrors = 0
+        maxWarnings = 0
+    }
+    checkstyle {
+        toolVersion("8.31")
+    }
+    pmd { }
+    findbugs { }
+//    spotbugs { }
+    detekt { }
+    lintOptions { }
 }
 
 android {
