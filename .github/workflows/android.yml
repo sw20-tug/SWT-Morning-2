@@ -13,6 +13,3 @@ jobs:
       with:
         java-version: 1.9
     - run: ./gradlew build jacocoTestReport
-    - run: mkdir -p artifacts
-    - run: cat app/build/reports/jacocoTestDebugUnitTestReport/html/index.html > artifacts/jacoco.html
-
