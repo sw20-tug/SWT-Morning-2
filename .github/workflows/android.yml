@@ -15,7 +15,7 @@ jobs:
     - run: ./gradlew build jacocoTestReport
     - run: mkdir -p artifacts
     - run: cat app/build/reports/jacocoTestDebugUnitTestReport/html/index.html > artifacts/jacoco.html
-  - uses: actions/upload-artifact@v1
-    with:
-      name: reports
-      path: artifacts
+    - uses: actions/upload-artifact@v1
+      with:
+        name: reports
+        path: artifacts
