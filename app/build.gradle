@@ -25,6 +25,14 @@ tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
 
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+
 staticAnalysis {
     penalty {
         maxErrors = 0
@@ -34,9 +42,8 @@ staticAnalysis {
         toolVersion("8.31")
     }
     pmd { }
-    findbugs { }
+    findbugs {}
 //    spotbugs { }
-    detekt { }
     lintOptions { }
 }
 
