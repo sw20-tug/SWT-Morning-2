@@ -38,7 +38,7 @@ public class TicTacToeGameLogicTest {
 
     @Test
     public void testDoubleTick(){
-        TicTacToeGameLogic logic = new TicTacToeGameLogic("first", "second");
+        TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
         Assert.assertTrue(logic.turn(0,0));
         Assert.assertTrue(logic.turn(1,0));
         Assert.assertFalse(logic.turn(0,0));
@@ -46,7 +46,7 @@ public class TicTacToeGameLogicTest {
 
     @Test
     public void testTickAll(){
-        TicTacToeGameLogic logic = new TicTacToeGameLogic("first", "second");
+        TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
         Assert.assertTrue(logic.turn(0,0));
         Assert.assertTrue(logic.turn(0,1));
         Assert.assertTrue(logic.turn(0,2));

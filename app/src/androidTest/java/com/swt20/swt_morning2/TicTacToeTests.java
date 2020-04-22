@@ -1,5 +1,8 @@
 package com.swt20.swt_morning2;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.ViewAction;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -49,11 +52,11 @@ public class TicTacToeTests {
                 }
 
                 // Go back to Tic-Tac-Toe Menu
-                onView(withId(R.id.ttt_game_button)).perform(click());
+                Espresso.pressBackUnconditionally();
             }
 
             // Go back to Main Menu
-            onView(withId(R.id.ttt_menu_back_button)).perform(click());
+            Espresso.pressBackUnconditionally();
         }
     }
 
