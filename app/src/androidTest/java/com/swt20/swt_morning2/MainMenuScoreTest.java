@@ -22,23 +22,18 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 @RunWith(AndroidJUnit4.class)
 public class MainMenuScoreTest {
 
-
     @Before
     public void intentWithStubbedNoteId() {
-
-        // Lazily start the Activity from the ActivityTestRule this time to inject the start Intent
         Intent startIntent = new Intent();
         activityRule.launchActivity(startIntent);
     }
 
-
-
     @Rule
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<MainActivity>(MainActivity.class, true, false) {
+
         @Override
         protected void beforeActivityLaunched() {
-
             super.beforeActivityLaunched();
             ScoreTracker st = new ScoreTracker(InstrumentationRegistry.getInstrumentation().getTargetContext());
             st.setScore(Game.TICTACTOE, 0);
@@ -49,19 +44,16 @@ public class MainMenuScoreTest {
 
     @Test
     public void TestTicTacToeScore() {
-
         onView(withId(R.id.ticTacToeScore)).check(matches(withText("Score: 0")));
     }
 
     @Test
     public void HangmanScore() {
-
         onView(withId(R.id.hangmanScore)).check(matches(withText("Score: 0")));
     }
 
     @Test
     public void TilesScore() {
-
         onView(withId(R.id.whiteTilesScore)).check(matches(withText("Score: 0")));
     }
 
