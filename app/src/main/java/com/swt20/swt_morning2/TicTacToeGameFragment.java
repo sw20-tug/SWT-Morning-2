@@ -35,14 +35,6 @@ public class TicTacToeGameFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.ttt_game_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(TicTacToeGameFragment.this)
-                        .navigate(R.id.action_Game_to_Menu);
-            }
-        });
-
         ((ImageView) view.findViewById(R.id.imageView)).setImageResource(R.drawable.empty);
         ((ImageView) view.findViewById(R.id.imageView2)).setImageResource(R.drawable.empty);
         ((ImageView) view.findViewById(R.id.imageView3)).setImageResource(R.drawable.empty);
