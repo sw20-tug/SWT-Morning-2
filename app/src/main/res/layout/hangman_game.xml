@@ -14,7 +14,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="512dp"
         android:textAlignment="center"
-        android:textSize="21dp"
+        android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView_word2guess" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_word2guess"
+        android:autofillHints="@string/hangman_question_txt" />
 
     <TextView
         android:id="@+id/textView"

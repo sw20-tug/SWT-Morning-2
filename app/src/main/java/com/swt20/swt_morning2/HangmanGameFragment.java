@@ -57,9 +57,9 @@ public class HangmanGameFragment extends Fragment {
         String lang = Locale.getDefault().getDisplayLanguage();
         if(lang.contains("de"))
         {
-            sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("HANGMAN_WORDS_DE", 0);
+            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
         } else {
-            sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("HANGMAN_WORDS_EN", 0);
+            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
         }
         String wordsJson = sharedPreferences.getString("WORDS",getString(R.string.hangman_default_words));
         Gson gson = new Gson();
@@ -76,7 +76,7 @@ public class HangmanGameFragment extends Fragment {
         textViewWord2Guess = view.findViewById(R.id.textView_word2guess);
         //TODO TCs
 
-        word2guess = wordList.getRandomWord().toUpperCase();
+        word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
         for (int i = 0; i < word2guess.length(); i++) {
             word2guess_viewtext += "_ ";
         }
@@ -85,7 +85,7 @@ public class HangmanGameFragment extends Fragment {
         view.findViewById(R.id.button_playagain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    word2guess = wordList.getRandomWord().toUpperCase();
+                    word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
                     word2guess_viewtext = "";
                     for (int i = 0; i < word2guess.length(); i++) {
                         word2guess_viewtext += "_ ";
@@ -105,7 +105,7 @@ public class HangmanGameFragment extends Fragment {
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String chrs = nextChar.getText().toString().toUpperCase();
+                String chrs = nextChar.getText().toString().toUpperCase(Locale.getDefault());
                 if (chrs.isEmpty()) {
                     Log.i(TAG, "chrs empty");
                     return;
