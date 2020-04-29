@@ -33,4 +33,6 @@
     <string name="hangman_WIN">Gratuliere, du hast das Wort erraten!</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"Test\",     \"Apfelbaum\",     \"Auto\",     \"Mensch\",     \"Chrysantheme\",     \"Kernspintomografie\",     \"Zucchini\",     \"Rueckgrat\",     \"unentgeltlich\",     \"Verlies\",     \"Terrasse\",     \"Quarzuhr\"   ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Nochmal spielen</string>
+    <string name="you_win">Du gewinnst!</string>
+    <string name="you_lose">Du verlierst!</string>
 </resources>

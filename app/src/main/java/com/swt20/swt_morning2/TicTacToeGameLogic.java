@@ -69,6 +69,89 @@ public class TicTacToeGameLogic {
         return validPlay;
     }
 
+    public Player getWinner() {
+        for (int i = 0; i < 3; i++) {
+            int counter = 0;
+            for (int j = 0; j < 3; j++) {
+                if(cells[i][j].getOwner() == null) {
+                    continue;
+                }
+                if(cells[i][j].getOwner().equals(this.first)) {
+                    counter++;
+                } else {
+                    counter--;
+                }
+            }
+            if (counter == 3) {
+                return this.first;
+            } else if(counter == -3) {
+                return this.second;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            int counter = 0;
+            for (int j = 0; j < 3; j++) {
+                if(cells[j][i].getOwner() == null) {
+                    continue;
+                }
+                if(cells[j][i].getOwner().equals(this.first)) {
+                    counter++;
+                } else {
+                    counter--;
+                }
+            }
+            if (counter == 3) {
+                return this.first;
+            } else if(counter == -3) {
+                return this.second;
+            }
+        }
+        int counter = 0;
+        for (int i = 0; i < 3; i++) {
+            if(cells[i][i].getOwner() == null) {
+                continue;
+            }
+            if(cells[i][i].getOwner().equals(this.first)) {
+                counter++;
+            } else {
+                counter--;
+            }
+        }
+        if (counter == 3) {
+            return this.first;
+        } else if(counter == -3) {
+            return this.second;
+        }
+
+        counter = 0;
+        for (int i = 2; i >= 0; i--) {
+            if(cells[i][2-i].getOwner() == null) {
+                continue;
+            }
+            if(cells[i][2-i].getOwner().equals(this.first)) {
+                counter++;
+            } else {
+                counter--;
+            }
+        }
+        if (counter == 3) {
+            return this.first;
+        } else if(counter == -3) {
+            return this.second;
+        }
+        return null;
+    }
+
+    public void changeScore(Player winner, ScoreTracker tracker) {
+        if(winner == null) return;
+        if(winner.equals(this.first)) {
+            tracker.addScore(Game.TICTACTOE, 1);
+        } else {
+            tracker.reduceScore(Game.TICTACTOE, 2);
+        }
+    }
+
     public Player getFirst() {
         return first;
     }

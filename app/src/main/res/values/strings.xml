@@ -29,12 +29,12 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
-
     <string name="hangman_question_guess">Enter your guess:</string>
     <string name="hangman_question_txt">guess?</string>
     <string name="hangman_WIN">\"Congratulations. You won!\"</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"fuchsia\",     \"jigsaw\",     \"jogging\",     \"jukebox\",     \"kilobyte\",     \"matrix\",     \"unworthy\",     \"schnapps\",     \"sphinx\",     \"bookworm\",     \"cryptography\",     \"razzmatazz\"    ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Play again</string>
-
+    <string name="you_win">You win!</string>
+    <string name="you_lose">You lose!</string>
 
 </resources>
