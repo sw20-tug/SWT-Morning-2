@@ -3,7 +3,7 @@ name: APK CI
 on: 
     push:
         branches:
-            *
+            'feature/GAMES_000E'
 jobs:
   apk:
     name: Generate APK
