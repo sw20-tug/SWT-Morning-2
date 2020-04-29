@@ -69,6 +69,14 @@ public class TicTacToeGameLogic {
         return validPlay;
     }
 
+    public Player getWinner() {
+        return null;
+    }
+
+    public void changeScore(Player winner, ScoreTracker tracker) {
+
+    }
+
     public Player getFirst() {
         return first;
     }

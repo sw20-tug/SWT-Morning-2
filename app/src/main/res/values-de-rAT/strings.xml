@@ -27,4 +27,7 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
+
+    <string name="you_win">Du gewinnst!</string>
+    <string name="you_lose">Du verlierst!</string>
 </resources>
