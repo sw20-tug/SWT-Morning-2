@@ -43,17 +43,17 @@ public class MainMenuScoreTest {
     };
 
     @Test
-    public void TestTicTacToeScore() {
+    public void testTicTacToeScore() {
         onView(withId(R.id.ticTacToeScore)).check(matches(withText("Score: 0")));
     }
 
     @Test
-    public void HangmanScore() {
+    public void hangmanScore() {
         onView(withId(R.id.hangmanScore)).check(matches(withText("Score: 0")));
     }
 
     @Test
-    public void TilesScore() {
+    public void tilesScore() {
         onView(withId(R.id.whiteTilesScore)).check(matches(withText("Score: 0")));
     }
 
