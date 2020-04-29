@@ -52,7 +52,7 @@ public class TicTacToeGameFragment extends Fragment {
                     if(winner != null) {
                         String text;
                         ScoreTracker tracker = new ScoreTracker(imageView.getContext());
-                        if(winner.getResId() == R.drawable.x) {
+                        if(winner.equals(logic.getFirst())) {
                             text = getResources().getString(R.string.you_win);
                         } else {
                             text = getResources().getString(R.string.you_lose);
