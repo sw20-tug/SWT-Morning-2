@@ -18,19 +18,19 @@ public class LocalizationTest {
     private final Context context = RuntimeEnvironment.application;
 
     @Test
-    @Config(qualifiers="de-rAT")
+    @Config(qualifiers = "de-rAT")
     public void testGerman() {
         assertEquals(context.getString(R.string.next), "Weiter");
     }
 
     @Test
-    @Config(qualifiers="en")
+    @Config(qualifiers = "en")
     public void testEnglish() {
         assertEquals(context.getString(R.string.next), "Next");
     }
 
     @Test
-    @Config(qualifiers="es")
+    @Config(qualifiers = "es")
     public void testMissingLanguageFallback() {
         assertEquals(context.getString(R.string.next), "Next");
     }

@@ -1,11 +1,11 @@
 package com.swt20.swt_morning2;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.mockito.Matchers;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -15,10 +15,12 @@ import static org.mockito.Mockito.when;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
     @Test
     public void addition_isMocked() {
         List<Integer> list = mock(List.class);

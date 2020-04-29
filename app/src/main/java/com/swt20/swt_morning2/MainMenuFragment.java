@@ -25,14 +25,15 @@ public class MainMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
         ScoreTracker score = new ScoreTracker(view.getContext());
 
-        String text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.TICTACTOE);
-        ((TextView)view.findViewById(R.id.ticTacToeScore)).setText(text);
+        String text = getResources().getString(R.string.game_score) + " "
+                +  score.getScore(Game.TICTACTOE);
+        ((TextView) view.findViewById(R.id.ticTacToeScore)).setText(text);
 
         text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.HANGMAN);
-        ((TextView)view.findViewById(R.id.hangmanScore)).setText(text);
+        ((TextView) view.findViewById(R.id.hangmanScore)).setText(text);
 
         text = getResources().getString(R.string.game_score) + " " +  score.getScore(Game.TILES);
-        ((TextView)view.findViewById(R.id.whiteTilesScore)).setText(text);
+        ((TextView) view.findViewById(R.id.whiteTilesScore)).setText(text);
 
         return view;
     }

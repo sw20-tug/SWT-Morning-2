@@ -5,212 +5,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class TicTacToeGameFragment extends Fragment {
 
-    int turn = 0;
-    Map<Integer, Boolean> fieldSet = new HashMap<>();
-
-
+    private TicTacToeGameLogic logic;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        logic = new TicTacToeGameLogic(R.drawable.x, R.drawable.o);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.tictactoe_game, container, false);
     }
 
-    /**
-     * A long method that needs a comment :D TODO for the team who wrote this :P.
-     */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.ttt_game_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(TicTacToeGameFragment.this)
-                        .navigate(R.id.action_Game_to_Menu);
+
+        TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
+        for (int rowCount = 0; rowCount < gameField.getChildCount(); rowCount++) {
+            final TableRow currentRow = (TableRow) gameField.getChildAt(rowCount);
+            for (int colCount = 0; colCount < currentRow.getChildCount(); colCount++) {
+                final ImageView currentImageView = (ImageView) currentRow.getChildAt(colCount);
+                setupCell(colCount, rowCount, currentImageView);
             }
-        });
+        }
+    }
 
-        ((ImageView) view.findViewById(R.id.imageView)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView2)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView3)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView4)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView5)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView6)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView7)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView8)).setImageResource(R.drawable.empty);
-        ((ImageView) view.findViewById(R.id.imageView9)).setImageResource(R.drawable.empty);
-
-        view.findViewById(R.id.imageView9).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView9;
+    private void setupCell(final int x, final int y, final ImageView imageView) {
+        imageView.setImageResource(R.drawable.empty);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView8).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView8;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView7).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView7;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView6).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView6;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView5).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView5;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView4).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView4;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView3).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView3;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView2).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView2;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
-                }
-            }
-        });
-
-        view.findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
-            int res = R.id.imageView;
-            @Override
-            public void onClick(View view) {
-                if (fieldSet.containsKey(res)) {
-                    return;
-                }
-                fieldSet.put(res, true);
-                turn++;
-                ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0) {
-                    img.setImageResource(R.drawable.o);
-                } else {
-                    img.setImageResource(R.drawable.x);
+                if (logic.turn(x, y)) {
+                    imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
                 }
             }
         });

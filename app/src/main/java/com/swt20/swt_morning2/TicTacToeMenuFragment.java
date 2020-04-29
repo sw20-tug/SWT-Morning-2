@@ -30,13 +30,5 @@ public class TicTacToeMenuFragment extends Fragment {
                         .navigate(R.id.action_Menu_to_Game);
             }
         });
-
-        view.findViewById(R.id.ttt_menu_back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(TicTacToeMenuFragment.this)
-                        .navigate(R.id.action_Menu_to_MainMenu);
-            }
-        });
     }
 }
