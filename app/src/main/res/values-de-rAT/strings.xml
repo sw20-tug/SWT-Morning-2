@@ -27,4 +27,10 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
+
+    <string name="hangman_question_guess">Nächster Buchstabe:</string>
+    <string name="hangman_question_txt">Vermutung?</string>
+    <string name="hangman_WIN">Gratuliere, du hast das Wort erraten!</string>
+    <string name="hangman_default_words">{   \"standardWords\": [     \"Test\",     \"Apfelbaum\",     \"Auto\",     \"Mensch\",     \"Chrysantheme\",     \"Kernspintomografie\",     \"Zucchini\",     \"Rueckgrat\",     \"unentgeltlich\",     \"Verlies\",     \"Terrasse\",     \"Quarzuhr\"   ],   \"customWords\": [   ] }</string>
+    <string name="hangman_playagain">Nochmal spielen</string>
 </resources>
