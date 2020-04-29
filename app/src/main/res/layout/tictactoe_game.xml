@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    tools:context=".TicTacToeGameFragment">
+
+    <TableLayout
+        android:id="@+id/ttt_game_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_7" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_8"/>
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_9"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_5"/>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_4"/>
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_6"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_1"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:visibility="visible"
+                android:clickable="true"
+                android:focusable="true"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_3"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="90dp"
+                android:layout_height="79dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="visible"
+                tools:srcCompat="@drawable/empty"
+                android:contentDescription="@string/tic_tac_toe_2"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
