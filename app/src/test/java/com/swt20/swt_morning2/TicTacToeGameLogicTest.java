@@ -1,40 +1,15 @@
 package com.swt20.swt_morning2;
 
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import org.checkerframework.dataflow.qual.TerminatesExecution;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.anyInt;
 
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
 
 
 @RunWith(MockitoJUnitRunner.class)
 public class TicTacToeGameLogicTest {
-    @Mock
-    private Context context;
-
-    @Mock
-    private SharedPreferences mockSharedPreferences;
-    @Mock
-    private SharedPreferences.Editor sharedprefeditor;
-
-
-    @Before
-    public void setup() {
-
-    }
 
     @Test
     public void testDoubleTick(){
