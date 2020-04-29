@@ -29,7 +29,7 @@ public class HangmanTests {
             = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void PlayGame() {
+    public void playGame() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
         int old_score = st.getScore(Game.HANGMAN);
@@ -54,7 +54,7 @@ public class HangmanTests {
     }
 
     @Test
-    public void PlayGameTwice() {
+    public void playGameTwice() {
 
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
