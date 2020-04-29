@@ -15,12 +15,15 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 @RunWith(AndroidJUnit4.class)
 public class TicTacToeTests {
 
+    /* TODO we have to delete this for findBugs, since it is not used
+    but we did not wrote that code, so we are not sure if it is ok to remove it.
     @Rule
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
+    */
 
     @Test
-    public void PlayGame() {
+    public void playGame() {
 
         for (int a = 0; a < 2; a++) {
 

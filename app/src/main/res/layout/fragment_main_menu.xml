@@ -11,7 +11,7 @@
         android:layout_width="307dp"
         android:layout_height="70dp"
         android:text="@string/welcome_screen_headline"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textAlignment="center"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/ticTacToeButton"
@@ -28,7 +28,8 @@
         app:layout_constraintTop_toBottomOf="@+id/MainMenuTextView"
         app:layout_constraintBottom_toTopOf="@+id/hangmanButton"
         app:layout_constraintEnd_toStartOf="@id/ticTacToeText"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/tic_tac_toe_image" />
 
     <ImageButton
         android:id="@+id/hangmanButton"
@@ -39,7 +40,8 @@
         app:layout_constraintTop_toBottomOf="@id/ticTacToeButton"
         app:layout_constraintBottom_toTopOf="@id/whiteTilesButton"
         app:layout_constraintEnd_toStartOf="@id/hangmanText"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/hang_man_image"/>
 
     <ImageButton
         android:id="@+id/whiteTilesButton"
@@ -50,7 +52,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/whiteTilesText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hangmanButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/hangmanButton"
+        android:contentDescription="@string/white_tiles_image"/>
 
     <TextView
         android:id="@+id/ticTacToeText"

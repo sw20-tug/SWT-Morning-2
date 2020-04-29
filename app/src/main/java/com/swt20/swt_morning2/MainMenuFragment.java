@@ -13,9 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-public class MainMenuFragment extends Fragment{
+public class MainMenuFragment extends Fragment {
 
     private static final String TAG = "MainMenuFragment";
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,

@@ -1,6 +1,5 @@
 package com.swt20.swt_morning2;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -18,7 +16,7 @@ import java.util.Map;
 public class TicTacToeGameFragment extends Fragment {
 
     int turn = 0;
-    Map<Integer, Boolean> field_set_ = new HashMap<>();
+    Map<Integer, Boolean> fieldSet = new HashMap<>();
 
 
 
@@ -31,6 +29,9 @@ public class TicTacToeGameFragment extends Fragment {
         return inflater.inflate(R.layout.tictactoe_game, container, false);
     }
 
+    /**
+     * A long method that needs a comment :D TODO for the team who wrote this :P.
+     */
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -56,15 +57,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView9;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -72,15 +75,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView8;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -88,15 +93,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView7;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -104,15 +111,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView6;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -120,15 +129,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView5;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -136,15 +147,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView4;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -152,15 +165,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView3;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -168,15 +183,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView2;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
 
@@ -184,15 +201,17 @@ public class TicTacToeGameFragment extends Fragment {
             int res = R.id.imageView;
             @Override
             public void onClick(View view) {
-                if (field_set_.containsKey(res))
+                if (fieldSet.containsKey(res)) {
                     return;
-                field_set_.put(res, true);
+                }
+                fieldSet.put(res, true);
                 turn++;
                 ImageView img = (ImageView) view.findViewById(res);
-                if (turn % 2 == 0)
+                if (turn % 2 == 0) {
                     img.setImageResource(R.drawable.o);
-                else
+                } else {
                     img.setImageResource(R.drawable.x);
+                }
             }
         });
     }

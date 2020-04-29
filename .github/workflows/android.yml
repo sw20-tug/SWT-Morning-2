@@ -15,8 +15,27 @@ jobs:
         java-package: jdk
     - name: Build with Gradle
       run: ./gradlew build jacocoTestReport
-    - name: Upload Jacoco Artifact
+    - name: Upload Jacoco Report
+      if: always()
       uses: actions/upload-artifact@v1
       with:
         name: jacoco
         path: app/build/reports/jacocoTestDebugUnitTestReport/html/
+    - name: Upload Checkstyle Report
+      if: always()
+      uses: actions/upload-artifact@v1
+      with:
+        name: checkstyle
+        path: app/build/reports/checkstyle/
+    - name: Upload Findbugs Report
+      if: always()
+      uses: actions/upload-artifact@v1
+      with:
+        name: findbugs
+        path: app/build/reports/findbugs/
+    - name: Upload Findbugs Report
+      if: always()
+      uses: actions/upload-artifact@v1
+      with:
+        name: lint-results
+        path: app/build/reports/lint-results.html

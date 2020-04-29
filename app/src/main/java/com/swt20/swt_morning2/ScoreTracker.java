@@ -3,12 +3,6 @@ package com.swt20.swt_morning2;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-enum Game {
-    HANGMAN,
-    TICTACTOE,
-    TILES
-}
-
 public class ScoreTracker {
     private static final String HANGMAN_SCORE = "HANGMAN_SCORE";
     private static final String TICTACTOE_SCORE = "TICTACTOE_SCORE";
@@ -94,6 +88,8 @@ public class ScoreTracker {
             case TICTACTOE:
                 ticTacToeScore = score;
                 break;
+            default:
+                throw new RuntimeException("Unkown game!");
         }
         storeScores();
     }
