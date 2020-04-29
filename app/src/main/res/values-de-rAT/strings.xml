@@ -5,9 +5,11 @@
     <string name="next">Weiter</string>
 
     <string name="start_game">Spiel starten</string>
+    <string name="options">Einstellungen</string>
 
-    <string name="ttt_menu_fragment_label">TTT Menu</string>
-    <string name="ttt_game_fragment_label">TTT Game</string>
+    <string name="ttt_menu_fragment_label">TTT Menü</string>
+    <string name="ttt_game_fragment_label">TTT Spiel</string>
+    <string name="ttt_options_fragment_label">TTT Einstellungen</string>
 
     <string name="welcome_screen_headline">Spiele Sammlung</string>
     <string name="tic_tac_toe_text">TicTacToe</string>
