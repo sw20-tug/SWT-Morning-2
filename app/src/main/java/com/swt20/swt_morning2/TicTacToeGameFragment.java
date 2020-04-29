@@ -29,23 +29,23 @@ public class TicTacToeGameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        TableLayout game_field = ((TableLayout) view.findViewById(R.id.ttt_game_field));
-        for (int row_count = 0; row_count < game_field.getChildCount(); row_count++) {
-            final TableRow current_row = (TableRow) game_field.getChildAt(row_count);
-            for (int col_count = 0; col_count < current_row.getChildCount(); col_count++) {
-                final ImageView current_image_view = (ImageView) current_row.getChildAt(col_count);
-                setupCell(col_count, row_count, current_image_view);
+        TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
+        for (int rowCount = 0; rowCount < gameField.getChildCount(); rowCount++) {
+            final TableRow currentRow = (TableRow) gameField.getChildAt(rowCount);
+            for (int colCount = 0; colCount < currentRow.getChildCount(); colCount++) {
+                final ImageView currentImageView = (ImageView) currentRow.getChildAt(colCount);
+                setupCell(colCount, rowCount, currentImageView);
             }
         }
     }
 
-    private void setupCell(final int x, final int y, final ImageView image_view) {
-        image_view.setImageResource(R.drawable.empty);
-        image_view.setOnClickListener(new View.OnClickListener() {
+    private void setupCell(final int x, final int y, final ImageView imageView) {
+        imageView.setImageResource(R.drawable.empty);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(logic.turn(x, y)) {
-                    image_view.setImageResource(logic.getCell(x, y).getOwner().getResId());
+                if (logic.turn(x, y)) {
+                    imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
                 }
             }
         });

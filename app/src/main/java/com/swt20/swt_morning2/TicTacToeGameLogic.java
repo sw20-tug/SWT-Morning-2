@@ -2,25 +2,25 @@ package com.swt20.swt_morning2;
 
 public class TicTacToeGameLogic {
 
-    public class Player {
+    public static class Player {
 
-        private int res_id;
+        private int resId;
 
-        public Player(int res_id) {
-            this.res_id = res_id;
+        public Player(int resId) {
+            this.resId = resId;
         }
 
         public int getResId() {
-            return res_id;
+            return resId;
         }
 
-        public void setResId(int res_id) {
-            this.res_id = res_id;
+        public void setResId(int resId) {
+            this.resId = resId;
         }
 
     }
 
-    public class Cell {
+    public static class Cell {
         private Player owner;
 
         public Cell() {
@@ -41,27 +41,32 @@ public class TicTacToeGameLogic {
     }
 
 
-    private Player first, second;
+    private Player first;
+    private Player second;
     private Cell[][] cells = new Cell[3][3];
     private int turnCount = 0;
 
-    public TicTacToeGameLogic(int first_player_res_id, int second_player_res_id) {
-        this.first = new Player(first_player_res_id);
-        this.second = new Player(second_player_res_id);
-        for (int i = 0; i < 9; i++) cells[i % 3][i / 3] = new Cell();
+    public TicTacToeGameLogic(int firstPlayerResId, int secondPlayerResId) {
+        this.first = new Player(firstPlayerResId);
+        this.second = new Player(secondPlayerResId);
+        for (int i = 0; i < 9; i++) {
+            cells[i % 3][i / 3] = new Cell();
+        }
     }
 
-    private boolean assign_cell(int x, int y, Player currentPlayer) {
+    private boolean assignCell(int x, int y, Player currentPlayer) {
         Cell currentCell = getCell(x, y);
-        if (currentCell == null) return false;
+        if (currentCell == null) {
+            return false;
+        }
         return currentCell.occupy(currentPlayer);
     }
 
     public boolean turn(int x, int y) {
         Player currentPlayer = ((turnCount % 2) == 0) ? first : second;
-        boolean valid_play = assign_cell(x, y, currentPlayer);
-        if (valid_play) turnCount++;
-        return valid_play;
+        boolean validPlay = assignCell(x, y, currentPlayer);
+        if (validPlay) turnCount++;
+        return validPlay;
     }
 
     public Player getFirst() {
@@ -72,7 +77,7 @@ public class TicTacToeGameLogic {
         return second;
     }
 
-    public Cell getCell(int x, int y){
+    public Cell getCell(int x, int y) {
         try {
             return cells[x][y];
         } catch (ArrayIndexOutOfBoundsException e) {
