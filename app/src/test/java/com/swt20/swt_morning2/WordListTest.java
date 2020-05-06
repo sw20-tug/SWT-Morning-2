@@ -42,4 +42,31 @@ public class WordListTest {
         }
         assert (found);
     }
+
+    @Test
+    public void testAddCustomWord() {
+        boolean found = false;
+        Gson gson = new Gson();
+        HangmanGameFragment.WordList wordList = gson.fromJson("{\n" +
+                "  \"standardWords\": [\n" +
+                "    \"Test\",\n" +
+                "    \"Apfelbaum\",\n" +
+                "    \"Auto\",\n" +
+                "  ],\n" +
+                "  \"customWords\": [\n" +
+                "  ]\n" +
+                "}", HangmanGameFragment.WordList.class);
+
+        String newWord = "Dog";
+
+        if (!wordList.addCustomword(newWord)) {
+            assert(false);
+        }
+
+        if (wordList.customWords.contains(newWord)) {
+            found = true;
+        }
+
+        assert (found);
+    }
 }
