@@ -69,4 +69,25 @@ public class WordListTest {
 
         assert (found);
     }
+
+    @Test
+    public void testAddCustomWordAlreadyInStandardWords() {
+        Gson gson = new Gson();
+        HangmanGameFragment.WordList wordList = gson.fromJson("{\n" +
+                "  \"standardWords\": [\n" +
+                "    \"Test\",\n" +
+                "    \"Apfelbaum\",\n" +
+                "    \"Auto\",\n" +
+                "  ],\n" +
+                "  \"customWords\": [\n" +
+                "  ]\n" +
+                "}", HangmanGameFragment.WordList.class);
+
+        String newWord = "Test";
+
+        if (!wordList.addCustomword(newWord)) {
+            assert(true);
+        }
+        assert (false);
+    }
 }
