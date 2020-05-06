@@ -9,7 +9,6 @@
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
-    <string name="ttt_options_fragment_label">TTT Options</string>
 
 
     <string name="welcome_screen_headline">Games Collection</string>
@@ -17,6 +16,7 @@
     <string name="hangman_text">Hangman</string>
     <string name="white_tiles_text">Don\'t touch the white tiles</string>
     <string name="game_score">Score: </string>
+    <string name="auto_player">Opponent as auto-player</string>
 
     <string name="tic_tac_toe_image">Tic Tac Toe</string>
     <string name="hang_man_image">Hangman</string>

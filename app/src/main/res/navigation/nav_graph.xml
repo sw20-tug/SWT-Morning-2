@@ -24,15 +24,6 @@
         <action
             android:id="@+id/action_Menu_to_Game"
             app:destination="@id/TicTacToeGameFragment" />
-        <action
-            android:id="@+id/action_Menu_to_Options"
-            app:destination="@id/TicTacToeOptionsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/TicTacToeOptionsFragment"
-        android:name="com.swt20.swt_morning2.TicTacToeOptionsFragment"
-        android:label="@string/ttt_options_fragment_label"
-        tools:layout="@layout/tictactoe_options">
     </fragment>
     <fragment
         android:id="@+id/TicTacToeGameFragment"
