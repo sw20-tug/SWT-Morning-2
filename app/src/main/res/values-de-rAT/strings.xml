@@ -31,11 +31,4 @@
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
 
-    <string-array name="ttt_colors">
-        <item>Blau</item>
-        <item>Grün</item>
-        <item>Violett</item>
-        <item>Rot</item>
-    </string-array>
-
 </resources>

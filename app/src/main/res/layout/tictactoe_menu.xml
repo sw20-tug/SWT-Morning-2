@@ -7,70 +7,57 @@
     android:layout_gravity="center"
     tools:context=".TicTacToeMenuFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/ttt_menu_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/start_game"
-            android:textSize="30sp" />
-
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="@string/auto_player"
-            android:textSize="18sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/ttt_menu_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_game"
+                android:textSize="30sp" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/auto_player"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/ttt_text_color_p1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="@string/ttt_text_color_p1"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/ttt_spinner_color_p1"
+            <TableLayout
+                android:id="@+id/ttt_color_choice_p1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/ttt_text_color_p2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="@string/ttt_text_color_p2"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/ttt_spinner_color_p2"
+            <TableLayout
+                android:id="@+id/ttt_color_choice_p2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
