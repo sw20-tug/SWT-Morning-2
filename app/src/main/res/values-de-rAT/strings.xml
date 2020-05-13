@@ -35,4 +35,5 @@
     <string name="hangman_playagain">Nochmal spielen</string>
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>
+    <string name="tiles_menu_fragment_label">Nicht die weißen Felder berühren</string>
 </resources>

@@ -36,5 +36,6 @@
     <string name="hangman_playagain">Play again</string>
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
+    <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>
 
 </resources>
