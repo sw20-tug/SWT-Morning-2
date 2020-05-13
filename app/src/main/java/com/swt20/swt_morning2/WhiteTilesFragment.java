@@ -52,8 +52,7 @@ public class WhiteTilesFragment extends Fragment {
     private void whiteButtonClicked() {
         String text = getResources().getString(R.string.you_lose);;
         Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
-        NavHostFragment.findNavController(WhiteTilesFragment.this)
-                .navigate(R.id.action_TilesGameFragment_to_TilesMenuFragment);
+        getActivity().onBackPressed();
     }
 
     private void blackButtonClicked(View view) {

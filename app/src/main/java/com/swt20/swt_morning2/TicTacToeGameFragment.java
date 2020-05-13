@@ -59,8 +59,7 @@ public class TicTacToeGameFragment extends Fragment {
                         }
                         logic.changeScore(winner, tracker);
                         Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
-                        NavHostFragment.findNavController(TicTacToeGameFragment.this)
-                                .navigate(R.id.action_Game_to_Menu);
+                        getActivity().onBackPressed();
                     }
                 }
             }
