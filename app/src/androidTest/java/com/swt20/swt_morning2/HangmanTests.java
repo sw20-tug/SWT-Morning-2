@@ -1,7 +1,6 @@
 package com.swt20.swt_morning2;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -15,12 +14,17 @@ import org.junit.runner.RunWith;
 import junit.framework.AssertionFailedError;
 
 import static androidx.test.espresso.Espresso.onView;
+
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.StringContains.containsString;
+
 
 @RunWith(AndroidJUnit4.class)
 public class HangmanTests {
@@ -33,7 +37,7 @@ public class HangmanTests {
     public void playGame() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
-        int oldScore = st.getScore(Game.HANGMAN);
+        Integer old_score = st.getScore(Game.HANGMAN);
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
 
@@ -45,8 +49,16 @@ public class HangmanTests {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(str));
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
+                try{
+                    onView(withId(R.id.textView_word2guess)).check(matches(withText(containsString("_"))));
+                    assertThat(st.getScore(Game.HANGMAN), is(old_score - 2));
+                } catch (AssertionFailedError e)
+                {
+                    // View not displayed
+                }
+
                 // View displayed
-                assert (st.getScore(Game.HANGMAN) == oldScore + 1);
+                assertThat (st.getScore(Game.HANGMAN), is(old_score+1));
                 return;
             } catch (AssertionFailedError e) {
                 // View not displayed
@@ -82,7 +94,7 @@ public class HangmanTests {
                 }
             }
         }
-        assert (false);
+        assertThat (false,is(true));
     }
 
     @Test
@@ -105,7 +117,7 @@ public class HangmanTests {
                 // View not displayed
             }
         }
-        assert (false);
+        assertThat (false,is(true));
     }
 
     @Test
@@ -128,7 +140,7 @@ public class HangmanTests {
                 // View not displayed
             }
         }
-        assert (false);
+        assertThat(false,is(true));
     }
 
     @Test
@@ -147,13 +159,13 @@ public class HangmanTests {
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 // View displayed
-                assert (st.getScore(Game.HANGMAN) == old_score - 1);
+                assertThat(st.getScore(Game.HANGMAN), is(old_score - 1));
                 return;
             } catch (AssertionFailedError e) {
                 // View not displayed
             }
         }
-        assert (false);
+        assertThat(false,is(true));
     }
 
 }
