@@ -39,6 +39,8 @@
     <string name="hangman_add_word">Wort Hinzufügen</string>
     <string name="hangman_remove_word">Wort Entfernen</string>
     <string name="hangman_input_word_text_hint">Wort Eingeben</string>
+    <string name="hangman_toast_add_successful">Wort erfolgreich hinzugefügt</string>
+    <string name="hangman_toast_add_failed">Wort bereits vorhanden</string>
 
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>

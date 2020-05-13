@@ -40,6 +40,8 @@
     <string name="hangman_add_word">Add Word</string>
     <string name="hangman_remove_word">Remove Word</string>
     <string name="hangman_input_word_text_hint">Input Word</string>
+    <string name="hangman_toast_add_successful">Word added successfully</string>
+    <string name="hangman_toast_add_failed">Word already in use</string>
 
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
