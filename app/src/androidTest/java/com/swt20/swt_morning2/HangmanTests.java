@@ -2,7 +2,9 @@ package com.swt20.swt_morning2;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
+import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -16,10 +18,12 @@ import junit.framework.AssertionFailedError;
 import static androidx.test.espresso.Espresso.onView;
 
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.is;
@@ -154,18 +158,28 @@ public class HangmanTests {
         // Go from Hangman Menu to Game
         onView(withId(R.id.ttt_menu_button)).perform(click());
         String letter = "a";
-        for (int i = 0; i < 9 ; i++)  {
+        for (int i = 0; i <= 9 ; i++)  {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
+                onView(withId(R.id.button_playagain)).perform(click());
+                onView(isRoot()).perform(pressBack());
+                onView(isRoot()).perform(pressBack());
                 // View displayed
-                assertThat(st.getScore(Game.HANGMAN), is(old_score - 1));
-                return;
+                break;
             } catch (AssertionFailedError e) {
                 // View not displayed
             }
         }
-        assertThat(false,is(true));
+        try {
+            Thread.sleep(4000);
+        }catch (InterruptedException e)
+        {
+
+        }
+        ScoreTracker st2 = new ScoreTracker(activity.getApplicationContext());
+        assertThat(st2.getScore(Game.HANGMAN), is(old_score - 2));
+        //assertThat(false,is(true));
     }
 
 }
