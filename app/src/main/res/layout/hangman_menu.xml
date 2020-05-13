@@ -7,27 +7,26 @@
     tools:context=".HangmanMenuFragment">
 
 
-
     <Button
         android:id="@+id/ttt_menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="50dp"
         android:text="@string/start_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/hangmanRemoveWordButton" />
 
     <Button
         android:id="@+id/hangmanAddWordButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="@string/hangman_add_word"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hangmanAddWordTextInput"
-        app:layout_constraintTop_toBottomOf="@+id/ttt_menu_button" />
+        app:layout_constraintTop_toBottomOf="@+id/wordListToggleButton" />
 
     <Button
         android:id="@+id/hangmanRemoveWordButton"
@@ -44,15 +43,15 @@
         android:id="@+id/hangmanAddWordTextInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="@string/hangman_input_word_text_hint"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/hangman_input_word_text_hint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/hangmanAddWordButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ttt_menu_button"
-        android:autofillHints="@string/hangman_input_word_text_hint" />
+        app:layout_constraintTop_toBottomOf="@+id/wordListToggleButton" />
 
     <EditText
         android:id="@+id/hangmanRemoveWordTextInput"
