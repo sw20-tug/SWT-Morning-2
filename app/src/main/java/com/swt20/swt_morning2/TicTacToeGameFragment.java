@@ -49,10 +49,10 @@ public class TicTacToeGameFragment extends Fragment {
                 if (logic.turn(x, y)) {
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
                     TicTacToeGameLogic.Player winner = logic.getWinner();
-                    if(winner != null) {
+                    if (winner != null) {
                         String text;
                         ScoreTracker tracker = new ScoreTracker(imageView.getContext());
-                        if(winner.equals(logic.getFirst())) {
+                        if (winner.equals(logic.getFirst())) {
                             text = getResources().getString(R.string.you_win);
                         } else {
                             text = getResources().getString(R.string.you_lose);
