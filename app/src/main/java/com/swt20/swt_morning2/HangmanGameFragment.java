@@ -157,5 +157,9 @@ public class HangmanGameFragment extends Fragment {
         public boolean removeWord(String word) {
                 return customWords.remove(word);
         }
+
+        public boolean isStandardWord(String word) {
+            return standardWords.contains(word);
+        }
     }
 }

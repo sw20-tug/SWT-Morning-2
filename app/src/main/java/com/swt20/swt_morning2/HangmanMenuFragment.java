@@ -21,7 +21,8 @@ public class HangmanMenuFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private HangmanGameFragment.WordList wordList;
 
-    private EditText field;
+    private EditText addField;
+    private EditText removeField;
 
     @Override
     public View onCreateView(
@@ -54,17 +55,36 @@ public class HangmanMenuFragment extends Fragment {
             }
         });
 
-        field = view.findViewById(R.id.hangmanAddWordTextInput);
+        addField = view.findViewById(R.id.hangmanAddWordTextInput);
 
         view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wordList.addWord(field.getText().toString())){
+                if (wordList.addWord(addField.getText().toString())){
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_add_successful), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_add_failed), Toast.LENGTH_LONG).show();
                 }
-                field.setText("");
+                addField.setText("");
+
+            }
+        });
+
+        removeField = view.findViewById(R.id.hangmanRemoveWordTextInput);
+
+        view.findViewById(R.id.hangmanRemoveWordButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String word = removeField.getText().toString();
+                if (wordList.isStandardWord(word)) {
+                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_standard_word), Toast.LENGTH_LONG).show();
+                }
+                else if (wordList.removeWord(word)){
+                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_successful), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_failed), Toast.LENGTH_LONG).show();
+                }
+                removeField.setText("");
 
             }
         });

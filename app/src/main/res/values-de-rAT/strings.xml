@@ -41,6 +41,9 @@
     <string name="hangman_input_word_text_hint">Wort Eingeben</string>
     <string name="hangman_toast_add_successful">Wort erfolgreich hinzugefügt</string>
     <string name="hangman_toast_add_failed">Wort bereits vorhanden</string>
+    <string name="hangman_toast_remove_successful">Wort erfolgreich entfernt</string>
+    <string name="hangman_toast_remove_failed">Wort nicht vorhanden</string>
+    <string name="hangman_toast_remove_standard_word">Standard Wörter können nicht entfernt werden</string>
 
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>
