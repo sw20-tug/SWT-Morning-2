@@ -45,6 +45,8 @@
     <string name="hangman_toast_remove_successful">Word removed successfully</string>
     <string name="hangman_toast_remove_failed">Word not found</string>
     <string name="hangman_toast_remove_standard_word">Can not delete standard word</string>
+    <string name="hangman_word_list_toggle_on">Hide word list</string>
+    <string name="hangman_word_list_toggle_off">Show word list</string>
 
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>

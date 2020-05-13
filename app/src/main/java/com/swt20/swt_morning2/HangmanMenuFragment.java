@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,12 +18,16 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class HangmanMenuFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private HangmanGameFragment.WordList wordList;
+
+    private ListView wordListListView;
+    private ArrayAdapter arrayAdapter;
 
     private EditText addField;
     private EditText removeField;
@@ -47,6 +55,18 @@ public class HangmanMenuFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        addField = view.findViewById(R.id.hangmanAddWordTextInput);
+        removeField = view.findViewById(R.id.hangmanRemoveWordTextInput);
+
+        wordListListView = view.findViewById(R.id.wordListListView);
+        ToggleButton wordListToggleButton = view.findViewById(R.id.wordListToggleButton);
+
+        wordListListView.setVisibility(View.INVISIBLE);
+        ArrayList list = wordList.getWordList();
+        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, list);
+        wordListListView.setAdapter(arrayAdapter);
+
+
         view.findViewById(R.id.ttt_menu_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +74,6 @@ public class HangmanMenuFragment extends Fragment {
                         .navigate(R.id.action_Menu_to_Game);
             }
         });
-
-        addField = view.findViewById(R.id.hangmanAddWordTextInput);
 
         view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +87,6 @@ public class HangmanMenuFragment extends Fragment {
 
             }
         });
-
-        removeField = view.findViewById(R.id.hangmanRemoveWordTextInput);
 
         view.findViewById(R.id.hangmanRemoveWordButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +102,18 @@ public class HangmanMenuFragment extends Fragment {
                 }
                 removeField.setText("");
 
+            }
+        });
+
+        wordListToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    wordListListView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    wordListListView.setVisibility(View.INVISIBLE);
+                }
             }
         });
 

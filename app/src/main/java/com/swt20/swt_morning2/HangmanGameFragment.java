@@ -161,5 +161,12 @@ public class HangmanGameFragment extends Fragment {
         public boolean isStandardWord(String word) {
             return standardWords.contains(word);
         }
+
+        public ArrayList<String> getWordList() {
+            ArrayList<String> tmpList = new ArrayList<String>();
+            tmpList.addAll(standardWords);
+            tmpList.addAll(customWords);
+            return tmpList;
+        }
     }
 }
