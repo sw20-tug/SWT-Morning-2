@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -165,7 +166,7 @@ public class TicTacToeGameLogicTest {
         ScoreTracker st = new ScoreTracker(context);
         st.setScore(Game.TICTACTOE, 42);
         logic.changeScore(logic.getWinner(), st);
-        Assert.assertEquals(42 + change, st.getScore(Game.TICTACTOE));
+        verify(sharedprefeditor).putInt(eq("TICTACTOE_SCORE"), eq(42 + change));
     }
 
 }

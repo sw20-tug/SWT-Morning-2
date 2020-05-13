@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 public class WhiteTilesGameLogic {
     private HashMap<Integer, Integer> tilesButtons = new HashMap<>();
     private final Supplier<Integer> randomNumberSupplier;
-    public static List<Integer> tileButtonIds = new ArrayList<>();
+    static final List<Integer> tileButtonIds = new ArrayList<>();
 
     static {
         tileButtonIds.add(R.id.tilesFieldButton0);
