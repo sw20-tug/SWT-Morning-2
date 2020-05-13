@@ -1,7 +1,7 @@
 package com.swt20.swt_morning2;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +16,17 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class HangmanMenuFragment extends Fragment {
 
-    private SharedPreferences sharedPreferences;
-    private HangmanGameFragment.WordList wordList;
+    private static final String TAG = HangmanMenuFragment.class.getSimpleName();
+
+    private WordListWrapper.WordList wordList;
 
     private ListView wordListListView;
     private ArrayAdapter arrayAdapter;
+    private ToggleButton wordListToggleButton;
 
     private EditText addField;
     private EditText removeField;
@@ -38,34 +37,30 @@ public class HangmanMenuFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        String lang = Locale.getDefault().getDisplayLanguage();
-        if(lang.contains("de"))
-        {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
-        } else {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
-        }
-        String wordsJson = sharedPreferences.getString("WORDS",getString(R.string.hangman_default_words));
-        Gson gson = new Gson();
-        wordList = gson.fromJson(wordsJson, HangmanGameFragment.WordList.class);
+        wordList = new WordListWrapper(this).wordList;
 
         return inflater.inflate(R.layout.hangman_menu, container, false);
     }
 
+    @SuppressWarnings("unchecked")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         addField = view.findViewById(R.id.hangmanAddWordTextInput);
         removeField = view.findViewById(R.id.hangmanRemoveWordTextInput);
 
-        wordListListView = view.findViewById(R.id.wordListListView);
-        ToggleButton wordListToggleButton = view.findViewById(R.id.wordListToggleButton);
+        try {
+            wordListListView = view.findViewById(R.id.wordListListView);
+            wordListToggleButton = view.findViewById(R.id.wordListToggleButton);
 
-        wordListListView.setVisibility(View.INVISIBLE);
-        ArrayList list = wordList.getWordList();
-        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, list);
-        wordListListView.setAdapter(arrayAdapter);
-
+            wordListListView.setVisibility(View.INVISIBLE);
+            ArrayList list = wordList.getWordList();
+            arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, list);
+            wordListListView.setAdapter(arrayAdapter);
+        } catch (Exception ex) {
+            Log.i(TAG, "exception in word list list view " + ex);
+            ex.printStackTrace();
+        }
 
         view.findViewById(R.id.ttt_menu_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +75,7 @@ public class HangmanMenuFragment extends Fragment {
             public void onClick(View view) {
                 if (wordList.addWord(addField.getText().toString())){
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_add_successful), Toast.LENGTH_LONG).show();
+                    updateWordListListView();
                 } else {
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_add_failed), Toast.LENGTH_LONG).show();
                 }
@@ -97,6 +93,7 @@ public class HangmanMenuFragment extends Fragment {
                 }
                 else if (wordList.removeWord(word)){
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_successful), Toast.LENGTH_LONG).show();
+                    updateWordListListView();
                 } else {
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_failed), Toast.LENGTH_LONG).show();
                 }
@@ -117,5 +114,12 @@ public class HangmanMenuFragment extends Fragment {
             }
         });
 
+    }
+
+    @SuppressWarnings("unchecked")
+    private void updateWordListListView() {
+        ArrayList list = wordList.getWordList();
+        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, list);
+        wordListListView.setAdapter(arrayAdapter);
     }
 }

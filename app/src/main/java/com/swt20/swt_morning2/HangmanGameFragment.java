@@ -31,8 +31,7 @@ public class HangmanGameFragment extends Fragment {
     private String word2guess;
     private String word2guessViewtext = "";
     private TextView textViewWord2Guess;
-    private WordList wordList;
-    private SharedPreferences sharedPreferences;
+    private WordListWrapper.WordList wordList;
 
     @Override
     public View onCreateView(
@@ -40,17 +39,7 @@ public class HangmanGameFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-
-        String lang = Locale.getDefault().getDisplayLanguage();
-        if (lang.contains("de")) {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
-        } else {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
-        }
-        String wordsJson = sharedPreferences.getString(
-                "WORDS", getString(R.string.hangman_default_words));
-        Gson gson = new Gson();
-        wordList = gson.fromJson(wordsJson, WordList.class);
+        wordList = new WordListWrapper(this).wordList;
 
         return inflater.inflate(R.layout.hangman_game, container, false);
     }
@@ -133,40 +122,4 @@ public class HangmanGameFragment extends Fragment {
         imgr.showSoftInput(nextChar, InputMethodManager.SHOW_IMPLICIT);
     }
 
-    public class WordList {
-        public List<String> standardWords;
-        public List<String> customWords;
-
-        public String getRandomWord() {
-            List<String> tmpList = new ArrayList<String>();
-            tmpList.addAll(standardWords);
-            tmpList.addAll(customWords);
-            Random rand = new Random();
-            return tmpList.get(rand.nextInt(tmpList.size()));
-        }
-
-        public boolean addWord(String word) {
-            if (standardWords.contains(word) || customWords.contains(word))
-                return false;
-            else {
-                customWords.add(word);
-                return true;
-            }
-        }
-
-        public boolean removeWord(String word) {
-                return customWords.remove(word);
-        }
-
-        public boolean isStandardWord(String word) {
-            return standardWords.contains(word);
-        }
-
-        public ArrayList<String> getWordList() {
-            ArrayList<String> tmpList = new ArrayList<String>();
-            tmpList.addAll(standardWords);
-            tmpList.addAll(customWords);
-            return tmpList;
-        }
-    }
 }
