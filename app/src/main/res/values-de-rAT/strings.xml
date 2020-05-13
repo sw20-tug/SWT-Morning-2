@@ -5,10 +5,11 @@
     <string name="next">Weiter</string>
 
     <string name="start_game">Spiel starten</string>
-    <string name="options">Einstellungen</string>
 
     <string name="ttt_menu_fragment_label">TTT Menü</string>
     <string name="ttt_game_fragment_label">TTT Spiel</string>
+    <string name="ttt_text_color_p1">Farbe Spieler 1</string>
+    <string name="ttt_text_color_p2">Farbe Spieler 2</string>
 
     <string name="welcome_screen_headline">Spiele Sammlung</string>
     <string name="tic_tac_toe_text">TicTacToe</string>
@@ -18,7 +19,7 @@
     <string name="tic_tac_toe_image">Tic Tac Toe</string>
     <string name="hang_man_image">Hangman</string>
     <string name="white_tiles_image">White Tiles</string>
-    <string name="auto_player">Gegnerischer Computergegner</string>
+    <string name="auto_player">Computerspieler als Gegner</string>
 
     <string name="tic_tac_toe_1">TicTacToe1</string>
     <string name="tic_tac_toe_2">TicTacToe2</string>
@@ -29,4 +30,12 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
+
+    <string-array name="ttt_colors">
+        <item>Blau</item>
+        <item>Grün</item>
+        <item>Violett</item>
+        <item>Rot</item>
+    </string-array>
+
 </resources>
