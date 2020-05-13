@@ -144,5 +144,18 @@ public class HangmanGameFragment extends Fragment {
             Random rand = new Random();
             return tmpList.get(rand.nextInt(tmpList.size()));
         }
+
+        public boolean addWord(String word) {
+            if (standardWords.contains(word) || customWords.contains(word))
+                return false;
+            else {
+                customWords.add(word);
+                return true;
+            }
+        }
+
+        public boolean removeWord(String word) {
+                return customWords.remove(word);
+        }
     }
 }
