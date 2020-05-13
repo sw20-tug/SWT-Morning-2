@@ -6,15 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".HangmanMenuFragment">
 
+
+
     <Button
         android:id="@+id/ttt_menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="492dp"
+        android:layout_marginTop="260dp"
         android:text="@string/start_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hangmanAddWordButton"
+        android:layout_width="150"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/hangman_add_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hangmanAddWordTextInput"
+        app:layout_constraintTop_toBottomOf="@+id/ttt_menu_button" />
+
+    <Button
+        android:id="@+id/hangmanRemoveWordButton"
+        android:layout_width="150"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/hangman_remove_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hangmanRemoveWordTextInput"
+        app:layout_constraintTop_toBottomOf="@+id/hangmanAddWordButton" />
+
+
+    <EditText
+        android:id="@+id/hangmanAddWordTextInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hangman_input_word_text_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/hangmanAddWordButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttt_menu_button" />
+
+    <EditText
+        android:id="@+id/hangmanRemoveWordTextInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hangman_input_word_text_hint"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/hangmanRemoveWordButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hangmanAddWordButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
