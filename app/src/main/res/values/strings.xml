@@ -37,6 +37,10 @@
     <string name="hangman_WIN">\"Congratulations. You won!\"</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"fuchsia\",     \"jigsaw\",     \"jogging\",     \"jukebox\",     \"kilobyte\",     \"matrix\",     \"unworthy\",     \"schnapps\",     \"sphinx\",     \"bookworm\",     \"cryptography\",     \"razzmatazz\"    ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Play again</string>
+    <string name="hangman_add_word">Add Word</string>
+    <string name="hangman_remove_word">Remove Word</string>
+    <string name="hangman_input_word_text_hint">Input Word</string>
+
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
     <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>

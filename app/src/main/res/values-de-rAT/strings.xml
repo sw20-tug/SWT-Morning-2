@@ -20,6 +20,7 @@
     <string name="white_tiles_image">White Tiles</string>
     <string name="auto_player">Computerspieler als Gegner</string>
 
+
     <string name="tic_tac_toe_1">TicTacToe1</string>
     <string name="tic_tac_toe_2">TicTacToe2</string>
     <string name="tic_tac_toe_3">TicTacToe3</string>
@@ -35,7 +36,13 @@
     <string name="hangman_WIN">Gratuliere, du hast das Wort erraten!</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"Test\",     \"Apfelbaum\",     \"Auto\",     \"Mensch\",     \"Chrysantheme\",     \"Kernspintomografie\",     \"Zucchini\",     \"Rueckgrat\",     \"unentgeltlich\",     \"Verlies\",     \"Terrasse\",     \"Quarzuhr\"   ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Nochmal spielen</string>
+    <string name="hangman_add_word">Wort Hinzufügen</string>
+    <string name="hangman_remove_word">Wort Entfernen</string>
+    <string name="hangman_input_word_text_hint">Wort Eingeben</string>
+
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>
+
     <string name="tiles_menu_fragment_label">Nicht die weißen Felder berühren</string>
+
 </resources>
