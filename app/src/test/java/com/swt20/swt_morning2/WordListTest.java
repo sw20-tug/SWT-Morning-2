@@ -59,7 +59,7 @@ public class WordListTest {
 
         String newWord = "Dog";
 
-        if (!wordList.addCustomword(newWord)) {
+        if (!wordList.addWord(newWord)) {
             assert(false);
         }
 
@@ -85,7 +85,7 @@ public class WordListTest {
 
         String newWord = "Test";
 
-        if (!wordList.addCustomword(newWord)) {
+        if (!wordList.addWord(newWord)) {
             assert(true);
         }
         assert (false);
@@ -106,11 +106,11 @@ public class WordListTest {
 
         String newWord = "Dog";
 
-        if (!wordList.addCustomword(newWord)) {
+        if (!wordList.addWord(newWord)) {
             assert(false);
         }
 
-        if (!wordList.addCustomword(newWord)) {
+        if (!wordList.addWord(newWord)) {
             assert(true);
         }
 
