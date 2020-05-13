@@ -30,8 +30,8 @@ public class WordListWrapper {
     }
 
     public class WordList {
-        private List<String> standardWords;
-        private List<String> customWords;
+        public List<String> standardWords;
+        public List<String> customWords;
 
         public WordList() {
 
