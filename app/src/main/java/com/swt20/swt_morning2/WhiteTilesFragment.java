@@ -11,16 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
 
 public class WhiteTilesFragment extends Fragment {
 
-    private HashMap<Integer, Integer> tilesButtons = new HashMap<>();
-    public static List<Integer> tileButtonIds = new ArrayList<>();
+    private WhiteTilesGameLogic logic;
 
     @Override
     public View onCreateView(
@@ -32,27 +26,12 @@ public class WhiteTilesFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
+        logic = new WhiteTilesGameLogic();
         super.onViewCreated(view, savedInstanceState);
 
-        tileButtonIds.add(R.id.tilesFieldButton0);
-        tileButtonIds.add(R.id.tilesFieldButton1);
-        tileButtonIds.add(R.id.tilesFieldButton2);
-        tileButtonIds.add(R.id.tilesFieldButton3);
-        tileButtonIds.add(R.id.tilesFieldButton4);
-        tileButtonIds.add(R.id.tilesFieldButton5);
-        tileButtonIds.add(R.id.tilesFieldButton6);
-        tileButtonIds.add(R.id.tilesFieldButton7);
-        tileButtonIds.add(R.id.tilesFieldButton8);
-        tileButtonIds.add(R.id.tilesFieldButton9);
-        tileButtonIds.add(R.id.tilesFieldButton10);
-        tileButtonIds.add(R.id.tilesFieldButton11);
-        tileButtonIds.add(R.id.tilesFieldButton12);
-        tileButtonIds.add(R.id.tilesFieldButton13);
-        tileButtonIds.add(R.id.tilesFieldButton14);
-        tileButtonIds.add(R.id.tilesFieldButton15);
-
-        scrambleButtons(view);
-        tilesButtons.keySet().forEach((buttonId) -> {
+        logic.scrambleButtons();
+        colorButtons(view);
+        logic.getTilesButtons().keySet().forEach((buttonId) -> {
             setupClickListener(view, buttonId);
         });
 
@@ -60,7 +39,7 @@ public class WhiteTilesFragment extends Fragment {
 
     private void setupClickListener(View view, Integer buttonId) {
         view.findViewById(buttonId).setOnClickListener(view1 -> {
-            Integer integer = tilesButtons.get(buttonId);
+            Integer integer = logic.getTilesButtons().get(buttonId);
             view.findViewById(buttonId);
             if (integer != null && integer.equals(Color.WHITE)) {
                 whiteButtonClicked();
@@ -80,26 +59,12 @@ public class WhiteTilesFragment extends Fragment {
     private void blackButtonClicked(View view) {
         ScoreTracker tracker = new ScoreTracker(view.getContext());
         tracker.addScore(Game.TILES, 1);
-        scrambleButtons(view);
-    }
-
-    private void scrambleButtons(View view) {
-        Random r = new Random();
-        tileButtonIds.forEach(integer -> {
-            Integer color = r.nextInt(2) == 1 ? Color.WHITE : Color.BLACK;
-            tilesButtons.put(integer, color);
-        });
-        boolean validField = tilesButtons.containsValue(Color.BLACK);
-        if (!validField) {
-            List<Integer> buttonsAsList = new ArrayList<>(tilesButtons.keySet());
-            Integer randomBlackButtonId = buttonsAsList.get(r.nextInt(buttonsAsList.size()));
-            tilesButtons.put(randomBlackButtonId, Color.BLACK);
-        }
+        logic.scrambleButtons();
         colorButtons(view);
     }
 
     private void colorButtons(View view) {
-        tilesButtons.forEach((buttonId, color) -> {
+        logic.getTilesButtons().forEach((buttonId, color) -> {
             view.findViewById(buttonId).setBackgroundColor(color);
         });
     }

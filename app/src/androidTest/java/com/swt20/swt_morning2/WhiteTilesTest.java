@@ -41,7 +41,7 @@ public class WhiteTilesTest {
     @Before
     public void setupButtons(){
         buttons.clear();
-        WhiteTilesFragment.tileButtonIds.forEach(integer -> {
+        WhiteTilesGameLogic.tileButtonIds.forEach(integer -> {
             buttons.add(onView(withId(integer)));
         });
     }
@@ -71,7 +71,7 @@ public class WhiteTilesTest {
 
     public View getButtonWithColor(Integer color) {
         View button = null;
-        for (Integer integer : WhiteTilesFragment.tileButtonIds) {
+        for (Integer integer : WhiteTilesGameLogic.tileButtonIds) {
             View possibleButton = activityRule.getActivity().findViewById(integer);
             Drawable background = possibleButton.getBackground();
             ColorDrawable backgroundDrawable = (ColorDrawable) background;
