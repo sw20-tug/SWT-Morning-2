@@ -32,12 +32,21 @@ tasks.withType(Test) {
     jacoco.excludes = ['jdk.internal.*']
 }
 
-
 tasks.withType(Checkstyle) {
     reports {
-        xml.enabled false
+        xml.enabled true
         html.enabled true
     }
+    doLast {
+        println("Checking for checkstyle errors!")
+        reports.all { report ->
+            def outputFile = report.destination
+            if (outputFile.exists() && outputFile.text.contains("<error ")) {
+                throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
+            }
+        }
+    }
+
 }
 
 staticAnalysis {
@@ -46,7 +55,8 @@ staticAnalysis {
         maxWarnings = 0
     }
     checkstyle {
-        toolVersion("8.31")
+        toolVersion("8.32")
+        configFile rootProject.file('config/checkstyle/checkstyle.xml')
     }
     pmd { }
     findbugs {}
