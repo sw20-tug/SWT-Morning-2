@@ -30,4 +30,8 @@ and [this](https://developer.android.com/studio/run/device) for hardware devices
 To execute the unit tests execute the gradle test task via `./gradlew test`
 and to execute the UI Tests execute the gradle connectedAndroidTest task via `./gradlew connectedAndroidTest`.
 
+## Dev Environment Setup
+### Checkstyle
+To use checkstyle locally in android studio, you need to install the plugin `CheckStyle-IDEA`. To do that go to File->Settings->Plugins. After installation you have to configure it that it uses our rules. Go to File->Settings->Other Settings->Checkstyle, there click on the plus to add a new configuration file. The location of our config file is `config/checkstyle/checkstyle.xml`. If you run a check you must make sure that the correct config is selected, do this via the dropdown.
+
 
