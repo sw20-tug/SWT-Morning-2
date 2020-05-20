@@ -9,7 +9,7 @@ jacoco {
 
 android {
     lintOptions {
-        disable 'IconLocation', 'OldTargetApi'
+        disable 'IconLocation', 'OldTargetApi', 'UnusedResources'
     }
 }
 
