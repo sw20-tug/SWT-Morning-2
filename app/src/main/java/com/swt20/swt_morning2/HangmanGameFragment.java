@@ -47,7 +47,6 @@ public class HangmanGameFragment extends Fragment {
     private String word2guessViewtext = "";
     private TextView textViewWord2Guess;
     private WordList wordList;
-    private SharedPreferences sharedPreferences;
     private Integer tryCounter;
     private List<Character> tryedCharacters;
     private ImageView feedbackView;
@@ -60,19 +59,24 @@ public class HangmanGameFragment extends Fragment {
         // Inflate the layout for this fragment
 
         String lang = Locale.getDefault().getDisplayLanguage();
+        SharedPreferences sharedPreferences =
+                requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
         if (lang.contains("de")) {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
+            sharedPreferences =
+                    requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
         } else {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
+            sharedPreferences =
+                    requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
         }
-        String wordsJson = sharedPreferences.getString(
-                "WORDS", getString(R.string.hangman_default_words));
+        String wordsJson;
+        wordsJson = sharedPreferences.getString("WORDS", getString(R.string.hangman_default_words));
         Gson gson = new Gson();
         wordList = gson.fromJson(wordsJson, WordList.class);
 
         return inflater.inflate(R.layout.hangman_game, container, false);
     }
 
+    @Override
     public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         nextChar = view.findViewById(R.id.plainText_nextChar);
@@ -94,12 +98,12 @@ public class HangmanGameFragment extends Fragment {
         view.findViewById(R.id.button_playagain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
-                    word2guessViewtext = "";
-                    for (int i = 0; i < word2guess.length(); i++) {
-                        word2guessViewtext += "_ ";
-                    }
-                    textViewWord2Guess.setText(word2guessViewtext);
+                word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
+                word2guessViewtext = "";
+                for (int i = 0; i < word2guess.length(); i++) {
+                    word2guessViewtext += "_ ";
+                }
+                textViewWord2Guess.setText(word2guessViewtext);
                 textView.setVisibility(View.VISIBLE);
                 nextChar.setVisibility(View.VISIBLE);
                 view.findViewById(R.id.button_playagain).setVisibility(View.INVISIBLE);
@@ -126,7 +130,8 @@ public class HangmanGameFragment extends Fragment {
                     return;
                 }
 
-                if (word2guess.contains(Character.toString(chr)) && !tryedCharacters.contains(chr)) {
+                if (word2guess.contains(Character.toString(chr))
+                        && !tryedCharacters.contains(chr)) {
                     int idx = word2guess.indexOf(chr);
                     StringBuilder newText = new StringBuilder(word2guessViewtext);
                     while (idx >= 0) {
@@ -137,7 +142,8 @@ public class HangmanGameFragment extends Fragment {
                     textViewWord2Guess.setText(word2guessViewtext);
                 } else {
                     tryCounter++;
-                    //Toast.makeText(getContext(), "Incorrect guess nr " + tryCounter, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(),
+                    // "Incorrect guess nr " + tryCounter, Toast.LENGTH_LONG).show();
                     tryedCharacters.add(chr);
                     switch (tryCounter) {
                         case 1:
@@ -190,7 +196,7 @@ public class HangmanGameFragment extends Fragment {
 
         ScoreTracker st = new ScoreTracker(getContext().getApplicationContext());
         st.addScore(Game.HANGMAN, points);
-        String scoreText = Integer.toString(st.getScore(Game.HANGMAN));
+        //String scoreText = Integer.toString(st.getScore(Game.HANGMAN));
 
         //Toast.makeText(getContext(), scoreText, Toast.LENGTH_LONG).show();
         //Toast.makeText(getContext(), getString(R.string.hangman_lose), Toast.LENGTH_LONG).show();

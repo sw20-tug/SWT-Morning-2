@@ -62,7 +62,7 @@ public class HangmanTests {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(str));
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
-                try{
+                try {
                     onView(withId(R.id.textView_word2guess)).check(matches(withText(containsString("_"))));
                     try {
                         Thread.sleep(4000);
@@ -71,8 +71,7 @@ public class HangmanTests {
                     }
                     assertThat(st.getScore(Game.HANGMAN), is(old_score - 2));
                     return;
-                } catch (AssertionFailedError e)
-                {
+                } catch (AssertionFailedError e) {
                     // View not displayed
                 }
 
@@ -82,7 +81,7 @@ public class HangmanTests {
                 } catch (InterruptedException e) {
 
                 }
-                assertThat (st.getScore(Game.HANGMAN), is(old_score+1));
+                assertThat(st.getScore(Game.HANGMAN), is(old_score + 1));
                 return;
             } catch (AssertionFailedError e) {
                 // View not displayed
@@ -118,7 +117,7 @@ public class HangmanTests {
                 }
             }
         }
-        assertThat (false,is(true));
+        assertThat(false, is(true));
     }
 
     @Test
@@ -130,9 +129,9 @@ public class HangmanTests {
         // Go from Hangman Menu to Game
         onView(withId(R.id.ttt_menu_button)).perform(click());
 
-        String letter = "y" ;
+        String letter = "y";
 
-        for (int i = 0; i < 2 ; i++) {
+        for (int i = 0; i < 2; i++) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
                 Thread.sleep(100);
@@ -140,14 +139,14 @@ public class HangmanTests {
 
             }
             try {
-                    onView(withId(R.id.feedbackView)).check(matches(withDrawable(R.drawable.hangman_1)));
-                    return;
+                onView(withId(R.id.feedbackView)).check(matches(withDrawable(R.drawable.hangman_1)));
+                return;
                 // View displayed
             } catch (AssertionFailedError e) {
                 // View not displayed
             }
         }
-        assertThat (false,is(true));
+        assertThat(false, is(true));
     }
 
     @Test
@@ -161,7 +160,7 @@ public class HangmanTests {
 
         String letter = "a";
 
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
 
@@ -172,11 +171,11 @@ public class HangmanTests {
                 // View not displayed
             }
         }
-        assertThat(false,is(true));
+        assertThat(false, is(true));
     }
 
     @Test
-    public void ScoreReduced() {
+    public void scoreReduced() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
         int old_score = st.getScore(Game.HANGMAN);
@@ -208,6 +207,7 @@ public class HangmanTests {
         assertThat(st2.getScore(Game.HANGMAN), is(old_score - 2));
         //assertThat(false,is(true));
     }
+
     public static class EspressoTestsMatchers {
 
         public static Matcher<View> withDrawable(final int resourceId) {

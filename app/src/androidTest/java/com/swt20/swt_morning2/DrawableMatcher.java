@@ -1,4 +1,5 @@
 package com.swt20.swt_morning2;
+
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,8 +10,9 @@ import android.widget.ImageView;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-// taken from: https://github.com/dbottillo/Blog/blob/espresso_match_imageview/app/src/androidTest/java/com/danielebottillo/blog/config/DrawableMatcher.java
-class DrawableMatcher extends TypeSafeMatcher<View>{
+// taken from: https://github.com/dbottillo/Blog/blob/espresso_match_imageview/
+// app/src/androidTest/java/com/danielebottillo/blog/config/DrawableMatcher.java
+class DrawableMatcher extends TypeSafeMatcher<View> {
     private final int expectedId;
     private String resourceName;
     static final int EMPTY = -1;
@@ -47,7 +49,8 @@ class DrawableMatcher extends TypeSafeMatcher<View>{
     }
 
     private Bitmap getBitmap(Drawable drawable) {
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
