@@ -22,6 +22,7 @@ public class HangmanMenuFragment extends Fragment {
 
     private static final String TAG = HangmanMenuFragment.class.getSimpleName();
 
+    private WordListWrapper wordListWrapper;
     private WordListWrapper.WordList wordList;
 
     private ListView wordListListView;
