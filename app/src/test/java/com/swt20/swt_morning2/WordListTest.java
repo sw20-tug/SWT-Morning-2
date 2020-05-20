@@ -86,7 +86,7 @@ public class WordListTest {
         String newWord = "Test";
 
         if (wordList.addWord(newWord)) {
-            assert(false);
+            assert (false);
         }
         assert (true);
     }
@@ -107,11 +107,11 @@ public class WordListTest {
         String newWord = "Dog";
 
         if (!wordList.addWord(newWord)) {
-            assert(false);
+            assert (false);
         }
 
         if (wordList.addWord(newWord)) {
-            assert(false);
+            assert (false);
         }
 
         assert (true);
@@ -133,7 +133,7 @@ public class WordListTest {
         String newWord = "Test";
 
         if (wordList.removeWord(newWord)) {
-            assert(false);
+            assert (false);
         }
         assert (true);
     }
@@ -155,7 +155,7 @@ public class WordListTest {
         String newWord = "Temp";
 
         if (!wordList.removeWord(newWord)) {
-            assert(false);
+            assert (false);
         }
         assert (true);
     }
@@ -176,7 +176,7 @@ public class WordListTest {
         String newWord = "asd";
 
         if (wordList.removeWord(newWord)) {
-            assert(false);
+            assert (false);
         }
         assert (true);
     }
