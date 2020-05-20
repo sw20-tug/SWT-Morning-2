@@ -139,6 +139,7 @@ public class HangmanTests {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
+                return;
                 // View displayed
             } catch (AssertionFailedError e) {
                 // View not displayed
