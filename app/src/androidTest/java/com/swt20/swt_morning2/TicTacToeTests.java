@@ -100,7 +100,6 @@ public class TicTacToeTests {
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
 
-
     @Test
     public void playTheGameABit() {
 
