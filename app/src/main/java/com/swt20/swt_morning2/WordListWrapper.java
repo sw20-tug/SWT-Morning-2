@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class WordListWrapper {
-    public static SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences;
 
     public WordList wordList;
 
