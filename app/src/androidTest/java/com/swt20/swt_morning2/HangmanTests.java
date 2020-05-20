@@ -1,30 +1,19 @@
 package com.swt20.swt_morning2;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import junit.framework.AssertionFailedError;
 
 import org.hamcrest.Matcher;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-
-import junit.framework.AssertionFailedError;
-
 import static androidx.test.espresso.Espresso.onView;
-
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.pressBack;
 import static androidx.test.espresso.action.ViewActions.typeText;
@@ -50,7 +39,7 @@ public class HangmanTests {
     public void playGame() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
-        Integer old_score = st.getScore(Game.HANGMAN);
+        Integer oldScore = st.getScore(Game.HANGMAN);
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
 
@@ -63,13 +52,14 @@ public class HangmanTests {
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 try {
-                    onView(withId(R.id.textView_word2guess)).check(matches(withText(containsString("_"))));
+                    onView(withId(R.id.textView_word2guess)).check(
+                            matches(withText(containsString("_"))));
                     try {
                         Thread.sleep(4000);
                     } catch (InterruptedException e) {
-
+                        // View not displayed
                     }
-                    assertThat(st.getScore(Game.HANGMAN), is(old_score - 2));
+                    assertThat(st.getScore(Game.HANGMAN), is(oldScore - 2));
                     return;
                 } catch (AssertionFailedError e) {
                     // View not displayed
@@ -79,9 +69,9 @@ public class HangmanTests {
                 try {
                     Thread.sleep(4000);
                 } catch (InterruptedException e) {
-
+                    // View not displayed
                 }
-                assertThat(st.getScore(Game.HANGMAN), is(old_score + 1));
+                assertThat(st.getScore(Game.HANGMAN), is(oldScore + 1));
                 return;
             } catch (AssertionFailedError e) {
                 // View not displayed
@@ -136,10 +126,11 @@ public class HangmanTests {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-
+                // View not displayed
             }
             try {
-                onView(withId(R.id.feedbackView)).check(matches(withDrawable(R.drawable.hangman_1)));
+                onView(withId(R.id.feedbackView)).check(
+                        matches(withDrawable(R.drawable.hangman_1)));
                 return;
                 // View displayed
             } catch (AssertionFailedError e) {
@@ -166,7 +157,7 @@ public class HangmanTests {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
-
+                    // View not displayed
                 }
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 return;
@@ -205,7 +196,7 @@ public class HangmanTests {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-
+            // View not displayed
         }
         ScoreTracker st2 = new ScoreTracker(activity.getApplicationContext());
         assertThat(st2.getScore(Game.HANGMAN), is(old_score - 2));
