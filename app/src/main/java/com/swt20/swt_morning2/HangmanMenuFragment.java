@@ -37,7 +37,8 @@ public class HangmanMenuFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        wordList = new WordListWrapper(this).wordList;
+        wordListWrapper = new WordListWrapper(this);
+        wordList = wordListWrapper.wordList;
 
         return inflater.inflate(R.layout.hangman_menu, container, false);
     }
@@ -73,7 +74,7 @@ public class HangmanMenuFragment extends Fragment {
         view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (wordList.addWord(addField.getText().toString())){
+                if (wordListWrapper.addWordToWordList(addField.getText().toString())){
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_add_successful), Toast.LENGTH_LONG).show();
                     updateWordListListView();
                 } else {
@@ -91,7 +92,7 @@ public class HangmanMenuFragment extends Fragment {
                 if (wordList.isStandardWord(word)) {
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_standard_word), Toast.LENGTH_LONG).show();
                 }
-                else if (wordList.removeWord(word)){
+                else if (wordListWrapper.removeWordFromWordList(word)){
                     Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_successful), Toast.LENGTH_LONG).show();
                     updateWordListListView();
                 } else {

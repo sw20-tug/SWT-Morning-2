@@ -22,8 +22,7 @@ public class WordListWrapper {
         Gson gson = new Gson();
         String lang = Locale.getDefault().getDisplayLanguage();
 
-        if(lang.contains("de"))
-        {
+        if (lang.contains("de")) {
             sharedPreferences = fragment.requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
             //sharedPreferences.edit().remove("HANGMAN_WORDS_DE").commit();
             wordsJson = sharedPreferences.getString("HANGMAN_WORDS_DE", fragment.getString(R.string.hangman_default_words));
@@ -47,7 +46,34 @@ public class WordListWrapper {
             }
         }
 
-        //this.wordList.sharedPreferences = sharedPreferences;
+    }
+
+    public boolean addWordToWordList(String word) {
+        String lang = Locale.getDefault().getDisplayLanguage();
+        if (this.wordList.addWord(word)) {
+            Gson gson = new Gson();
+            if (lang.contains("de")) {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this.wordList).toString()).apply();
+            } else {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this.wordList).toString()).apply();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeWordFromWordList(String word) {
+        String lang = Locale.getDefault().getDisplayLanguage();
+        if (this.wordList.removeWord(word)) {
+            Gson gson = new Gson();
+            if (lang.contains("de")) {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this.wordList).toString()).apply();
+            } else {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this.wordList).toString()).apply();
+            }
+            return true;
+        }
+        return false;
 
     }
 
@@ -67,35 +93,17 @@ public class WordListWrapper {
             return tmpList.get(rand.nextInt(tmpList.size()));
         }
 
-        public boolean addWord(String word) {
-            String lang = Locale.getDefault().getDisplayLanguage();
+        boolean addWord(String word) {
             if (standardWords.contains(word) || customWords.contains(word) || word.length() < 2)
                 return false;
             else {
                 customWords.add(word);
-                Gson gson = new Gson();
-                if (lang.contains("de")) {
-                    WordListWrapper.sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this).toString()).apply();
-                } else {
-                    WordListWrapper.sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this).toString()).apply();
-                }
                 return true;
             }
         }
 
-        public boolean removeWord(String word) {
-            String lang = Locale.getDefault().getDisplayLanguage();
-            Gson gson = new Gson();
-
-            boolean success = customWords.remove(word);
-            if (success) {
-                if (lang.contains("de")) {
-                    WordListWrapper.sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this).toString()).apply();
-                } else {
-                    WordListWrapper.sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this).toString()).apply();
-                }
-            }
-            return success;
+        boolean removeWord(String word) {
+            return customWords.remove(word);
         }
 
         public boolean isStandardWord(String word) {
