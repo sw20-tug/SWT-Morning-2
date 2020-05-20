@@ -2,22 +2,26 @@ package com.swt20.swt_morning2;
 
 import android.app.Activity;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import junit.framework.AssertionFailedError;
-
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
+
+import junit.framework.AssertionFailedError;
+
+
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
 
 @RunWith(AndroidJUnit4.class)
 public class HangmanTests {
@@ -94,12 +98,10 @@ public class HangmanTests {
         onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanAddWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_add_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_remove_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
     }
 
@@ -116,17 +118,13 @@ public class HangmanTests {
         onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanAddWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_add_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_remove_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
-
-        //onView(withText(R.string.hangman_toast_remove_failed)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
     }
 
@@ -142,17 +140,14 @@ public class HangmanTests {
         onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanAddWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_add_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanAddWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_add_failed)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
         onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
         onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
 
-        //onView(withText(R.string.hangman_toast_remove_successful)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
     }
 }
