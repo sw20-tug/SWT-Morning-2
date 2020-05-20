@@ -33,8 +33,10 @@ public class TicTacToeGameFragment extends Fragment {
         View view = inflater.inflate(R.layout.tictactoe_game, container, false);
         SharedPreferences options = view.getContext().getApplicationContext()
                 .getSharedPreferences("TicTacToe_Options", 0);
-        int drawableFirstPlayer = options.getInt(DRAWABLE_FIRST_PLAYER, DEFAULT_DRAWABLE_FIRST_PLAYER);
-        int drawableSecondPlayer = options.getInt(DRAWABLE_SECOND_PLAYER, DEFAULT_DRAWABLE_SECOND_PLAYER);
+        int drawableFirstPlayer = options
+                .getInt(DRAWABLE_FIRST_PLAYER, DEFAULT_DRAWABLE_FIRST_PLAYER);
+        int drawableSecondPlayer = options
+                .getInt(DRAWABLE_SECOND_PLAYER, DEFAULT_DRAWABLE_SECOND_PLAYER);
 
         logic = new TicTacToeGameLogic(drawableFirstPlayer, drawableSecondPlayer);
         // Inflate the layout for this fragment

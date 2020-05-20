@@ -46,7 +46,7 @@ public class WhiteTilesGameLogic {
             tilesButtons.put(integer, color);
         });
         boolean validField = tilesButtons.containsValue(Color.BLACK);
-        if (!validField ) {
+        if (!validField) {
             List<Integer> buttonsAsList = new ArrayList<>(tilesButtons.keySet());
             Random r = new Random();
             Integer randomBlackButtonId = buttonsAsList.get(r.nextInt(buttonsAsList.size()));

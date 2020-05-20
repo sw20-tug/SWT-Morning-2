@@ -15,24 +15,24 @@ public class WordListTest {
     public void testWordListJsonParsing() {
         boolean found = false;
         Gson gson = new Gson();
-        HangmanGameFragment.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "    \"Mensch\",\n" +
-                "    \"Chrysantheme\",\n" +
-                "    \"Kernspintomografie\",\n" +
-                "    \"Zucchini\",\n" +
-                "    \"Rueckgrat\",\n" +
-                "    \"unentgeltlich\",\n" +
-                "    \"Verlies\",\n" +
-                "    \"Terrasse\",\n" +
-                "    \"Quarzuhr\"\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", HangmanGameFragment.WordList.class);
+        HangmanGameFragment.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "    \"Mensch\",\n"
+                + "    \"Chrysantheme\",\n"
+                + "    \"Kernspintomografie\",\n"
+                + "    \"Zucchini\",\n"
+                + "    \"Rueckgrat\",\n"
+                + "    \"unentgeltlich\",\n"
+                + "    \"Verlies\",\n"
+                + "    \"Terrasse\",\n"
+                + "    \"Quarzuhr\"\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", HangmanGameFragment.WordList.class);
 
         for (int i = 0; i < 100; i++) {
             if (wordList.getRandomWord().equalsIgnoreCase("Apfelbaum")) {

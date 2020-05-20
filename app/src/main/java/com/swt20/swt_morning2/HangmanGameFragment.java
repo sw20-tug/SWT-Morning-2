@@ -3,38 +3,25 @@ package com.swt20.swt_morning2;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
-
-import static androidx.core.content.ContextCompat.getSystemService;
 
 public class HangmanGameFragment extends Fragment {
     private static final String TAG = "[HangmanGameFragment]";
@@ -42,7 +29,7 @@ public class HangmanGameFragment extends Fragment {
     private TextView nextChar;
     private TextView textView;
     private String word2guess;
-    private String word2guess_viewtext = "";
+    private String word2guessViewtext = "";
     private TextView textViewWord2Guess;
     private WordList wordList;
     private SharedPreferences sharedPreferences;
@@ -55,13 +42,13 @@ public class HangmanGameFragment extends Fragment {
         // Inflate the layout for this fragment
 
         String lang = Locale.getDefault().getDisplayLanguage();
-        if(lang.contains("de"))
-        {
+        if (lang.contains("de")) {
             sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
         } else {
             sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
         }
-        String wordsJson = sharedPreferences.getString("WORDS",getString(R.string.hangman_default_words));
+        String wordsJson = sharedPreferences.getString(
+                "WORDS", getString(R.string.hangman_default_words));
         Gson gson = new Gson();
         wordList = gson.fromJson(wordsJson, WordList.class);
 
@@ -78,19 +65,19 @@ public class HangmanGameFragment extends Fragment {
 
         word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
         for (int i = 0; i < word2guess.length(); i++) {
-            word2guess_viewtext += "_ ";
+            word2guessViewtext += "_ ";
         }
-        textViewWord2Guess.setText(word2guess_viewtext);
+        textViewWord2Guess.setText(word2guessViewtext);
 
         view.findViewById(R.id.button_playagain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                     word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
-                    word2guess_viewtext = "";
+                    word2guessViewtext = "";
                     for (int i = 0; i < word2guess.length(); i++) {
-                        word2guess_viewtext += "_ ";
+                        word2guessViewtext += "_ ";
                     }
-                    textViewWord2Guess.setText(word2guess_viewtext);
+                    textViewWord2Guess.setText(word2guessViewtext);
                 textView.setVisibility(View.VISIBLE);
                 nextChar.setVisibility(View.VISIBLE);
                 view.findViewById(R.id.button_playagain).setVisibility(View.INVISIBLE);
@@ -117,21 +104,22 @@ public class HangmanGameFragment extends Fragment {
                 }
                 if (word2guess.contains(Character.toString(chr))) {
                     int idx = word2guess.indexOf(chr);
-                    StringBuilder newText = new StringBuilder(word2guess_viewtext);
+                    StringBuilder newText = new StringBuilder(word2guessViewtext);
                     while (idx >= 0) {
                         newText.setCharAt(idx * 2, chr);
                         idx = word2guess.indexOf(chr, idx + 1);
                     }
-                    word2guess_viewtext = newText.toString();
-                    textViewWord2Guess.setText(word2guess_viewtext);
+                    word2guessViewtext = newText.toString();
+                    textViewWord2Guess.setText(word2guessViewtext);
                 }
                 nextChar.setText("");
 
-                String result = word2guess_viewtext.replace(" ", "");
+                String result = word2guessViewtext.replace(" ", "");
                 if (word2guess.equalsIgnoreCase(result)) {
                     ScoreTracker st = new ScoreTracker(getContext());
                     st.addScore(Game.HANGMAN, 1);
-                    Toast.makeText(getContext(), getString(R.string.hangman_WIN), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getString(R.string.hangman_WIN),
+                            Toast.LENGTH_LONG).show();
 
                     view.findViewById(R.id.button_playagain).setVisibility(View.VISIBLE);
                     textView.setVisibility(View.INVISIBLE);

@@ -14,7 +14,6 @@ import androidx.test.rule.ActivityTestRule;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -100,7 +99,6 @@ public class TicTacToeTests {
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
 
-
     @Test
     public void playTheGameABit() {
 
@@ -145,8 +143,8 @@ public class TicTacToeTests {
         onView(withId(R.id.imageView6)).perform(click());
         onView(withId(R.id.imageView7)).perform(click());
         onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
-        onView(withText(R.string.you_win)).inRoot(withDecorView(not(is(activityRule.getActivity().
-                getWindow().getDecorView())))).check(matches(isDisplayed()));
+        onView(withText(R.string.you_win)).inRoot(withDecorView(not(is(activityRule.getActivity()
+                .getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
     private void checkOneColor(int resId, int resIdOpponent) {
@@ -155,8 +153,8 @@ public class TicTacToeTests {
         onView(withId(R.id.imageView)).perform(click());
         onView(withId(R.id.imageView2)).perform(click());
         onView(withId(R.id.imageView)).check(matches(EspressoTestsMatchers.withDrawable(resId)));
-        onView(withId(R.id.imageView2)).
-                check(matches(EspressoTestsMatchers.withDrawable(resIdOpponent)));
+        onView(withId(R.id.imageView2))
+                .check(matches(EspressoTestsMatchers.withDrawable(resIdOpponent)));
         Espresso.pressBackUnconditionally();
     }
 

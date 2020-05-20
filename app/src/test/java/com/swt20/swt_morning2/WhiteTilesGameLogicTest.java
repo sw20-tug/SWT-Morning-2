@@ -13,7 +13,7 @@ public class WhiteTilesGameLogicTest {
     @Test
     public void testRandomPlacement() {
         WhiteTilesGameLogic logic = new WhiteTilesGameLogic();
-        Assert.assertEquals( 0, logic.getTilesButtons().size());
+        Assert.assertEquals(0, logic.getTilesButtons().size());
         logic.scrambleButtons();
         Assert.assertEquals(16, logic.getTilesButtons().size());
         logic.getTilesButtons().forEach((buttonId, colorCode) -> {

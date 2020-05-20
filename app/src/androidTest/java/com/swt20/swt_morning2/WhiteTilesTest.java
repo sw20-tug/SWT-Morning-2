@@ -10,14 +10,14 @@ import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -39,7 +39,7 @@ public class WhiteTilesTest {
     private List<ViewInteraction> buttons = new ArrayList<>();
 
     @Before
-    public void setupButtons(){
+    public void setupButtons() {
         buttons.clear();
         WhiteTilesGameLogic.tileButtonIds.forEach(integer -> {
             buttons.add(onView(withId(integer)));
@@ -48,17 +48,18 @@ public class WhiteTilesTest {
 
 
     @Test
-    public void clickOnWhiteButton(){
+    public void clickOnWhiteButton() {
         onView(withId(R.id.whiteTilesButton)).perform(click());
 
         onView(withId(R.id.tiles_menu_button)).perform(click());
         View whiteButton = getButtonWithColor(Color.WHITE);
         onView(withId(whiteButton.getId())).perform(click());
-        onView(withText(R.string.you_lose)).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
+        onView(withText(R.string.you_lose)).inRoot(withDecorView(not(is(activityRule.getActivity()
+                .getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
     @Test
-    public void clickOnBlackButton(){
+    public void clickOnBlackButton() {
         onView(withId(R.id.whiteTilesButton)).perform(click());
 
         onView(withId(R.id.tiles_menu_button)).perform(click());
@@ -75,7 +76,7 @@ public class WhiteTilesTest {
             View possibleButton = activityRule.getActivity().findViewById(integer);
             Drawable background = possibleButton.getBackground();
             ColorDrawable backgroundDrawable = (ColorDrawable) background;
-            if(backgroundDrawable.getColor() == color) {
+            if (backgroundDrawable.getColor() == color) {
                 button = possibleButton;
                 break;
             }

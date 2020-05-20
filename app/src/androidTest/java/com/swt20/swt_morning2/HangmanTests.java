@@ -7,14 +7,14 @@ import android.content.SharedPreferences;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import junit.framework.AssertionFailedError;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onView;
 
+import junit.framework.AssertionFailedError;
+
+import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -32,19 +32,20 @@ public class HangmanTests {
     public void playGame() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
-        int old_score = st.getScore(Game.HANGMAN);
+        int oldScore = st.getScore(Game.HANGMAN);
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
         onView(withId(R.id.ttt_menu_button)).perform(click());
-        String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+            "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         for (String str : letters) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(str));
             try {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 // View displayed
-                assert (st.getScore(Game.HANGMAN) == old_score+1);
+                assert (st.getScore(Game.HANGMAN) == oldScore + 1);
                 return;
             } catch (AssertionFailedError e) {
                 // View not displayed
@@ -62,14 +63,15 @@ public class HangmanTests {
         // Go from Hangman Menu to Game
         onView(withId(R.id.ttt_menu_button)).perform(click());
 
-        String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        for(int i = 0; i < 2;i++) {
+        String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+            "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        for (int i = 0; i < 2; i++) {
             for (String str : letters) {
                 onView(withId(R.id.plainText_nextChar)).perform(typeText(str));
                 try {
                     onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                     // View displayed
-                    if(i < 1) {
+                    if (i < 1) {
                         onView(withId(R.id.button_playagain)).perform(click());
                     } else {
                         return;
