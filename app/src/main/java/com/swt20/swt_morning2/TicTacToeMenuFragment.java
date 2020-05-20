@@ -26,13 +26,10 @@ public class TicTacToeMenuFragment extends Fragment {
         private RelativeLayout view;
         private int resId;
         private int invertedResId;
-        private String player;
 
-        private ColorChoice(RelativeLayout view, int resId, String player) {
+        private ColorChoice(RelativeLayout view, int resId) {
             this.view = view;
             this.resId = resId;
-            this.player = player;
-            this.invertedResId = 0;
         }
 
     }
@@ -148,7 +145,7 @@ public class TicTacToeMenuFragment extends Fragment {
         imgView.setPadding(dpToPixels(10), dpToPixels(10), dpToPixels(10), dpToPixels(10));
         imgView.setBackgroundColor(0x008bc34a);
 
-        return new ColorChoice(imgLayout, rid, player);
+        return new ColorChoice(imgLayout, rid);
     }
 
     private ArrayList<ColorChoice> createColorChoicesFromDrawables(String regex, String player) {
