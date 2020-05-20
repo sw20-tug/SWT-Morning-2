@@ -5,8 +5,6 @@ import android.app.Activity;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import junit.framework.AssertionFailedError;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,7 +43,7 @@ public class HangmanTests {
                 // View displayed
                 assert (st.getScore(Game.HANGMAN) == oldScore + 1);
                 return;
-            } catch (AssertionFailedError e) {
+            } catch (Exception e) {
                 // View not displayed
             }
         }
@@ -74,7 +72,7 @@ public class HangmanTests {
                     } else {
                         return;
                     }
-                } catch (AssertionFailedError e) {
+                } catch (Exception e) {
                     // View not displayed
                 }
             }
