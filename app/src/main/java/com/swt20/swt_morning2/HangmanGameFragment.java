@@ -199,7 +199,12 @@ public class HangmanGameFragment extends Fragment {
         //String scoreText = Integer.toString(st.getScore(Game.HANGMAN));
 
         //Toast.makeText(getContext(), scoreText, Toast.LENGTH_LONG).show();
-        //Toast.makeText(getContext(), getString(R.string.hangman_lose), Toast.LENGTH_LONG).show();
+        if (points == 1) {
+            Toast.makeText(getContext(), getString(R.string.hangman_WIN), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(),
+                    getString(R.string.hangman_lose), Toast.LENGTH_LONG).show();
+        }
         tryCounter = 0;
         tryedCharacters.clear();
         view.findViewById(R.id.button_playagain).setVisibility(View.VISIBLE);

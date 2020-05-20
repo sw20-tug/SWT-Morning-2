@@ -150,7 +150,7 @@ public class HangmanTests {
     }
 
     @Test
-    public void pressLetterNineTimes() {
+    public void pressLetterMoreThanNineTimes() {
 
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
@@ -160,10 +160,14 @@ public class HangmanTests {
 
         String letter = "a";
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 12; i++) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
 
+                }
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 return;
                 // View displayed
