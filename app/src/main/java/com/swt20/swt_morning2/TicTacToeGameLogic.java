@@ -65,7 +65,9 @@ public class TicTacToeGameLogic {
     public boolean turn(int x, int y) {
         Player currentPlayer = ((turnCount % 2) == 0) ? first : second;
         boolean validPlay = assignCell(x, y, currentPlayer);
-        if (validPlay) turnCount++;
+        if (validPlay) {
+            turnCount++;
+        }
         return validPlay;
     }
 

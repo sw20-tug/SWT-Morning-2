@@ -8,6 +8,7 @@
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
+    <string name="ttt_text_color_p1">Color Selection</string>
 
 
     <string name="welcome_screen_headline">Games Collection</string>
@@ -15,6 +16,7 @@
     <string name="hangman_text">Hangman</string>
     <string name="white_tiles_text">Don\'t touch the white tiles</string>
     <string name="game_score">Score: </string>
+    <string name="auto_player">Auto-player as opponent</string>
 
     <string name="tic_tac_toe_image">Tic Tac Toe</string>
     <string name="hang_man_image">Hangman</string>
@@ -29,6 +31,7 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
+
     <string name="hangman_question_guess">Enter your guess:</string>
     <string name="hangman_question_txt">guess?</string>
     <string name="hangman_WIN">\"Congratulations. You won!\"</string>
@@ -37,5 +40,4 @@
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
     <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>
-
 </resources>
