@@ -51,5 +51,7 @@
     <string name="you_lose">Du verlierst!</string>
 
     <string name="tiles_menu_fragment_label">Nicht die weißen Felder berühren</string>
+    <string name="hangman_lose">Gratuliere, du hast das Wort nicht erraten!</string>
+    <string name="imageViewDescription">Dies ist das Feedback Bild für den user</string>
 
 </resources>

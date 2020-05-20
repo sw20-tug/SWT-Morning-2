@@ -57,7 +57,8 @@ public class HangmanMenuFragment extends Fragment {
 
             wordListListView.setVisibility(View.INVISIBLE);
             ArrayList list = wordList.getWordList();
-            arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, list);
+            arrayAdapter = new ArrayAdapter(getContext(),
+                    android.R.layout.simple_list_item_1, list);
             wordListListView.setAdapter(arrayAdapter);
         } catch (Exception ex) {
             Log.i(TAG, "exception in word list list view " + ex);
@@ -72,49 +73,60 @@ public class HangmanMenuFragment extends Fragment {
             }
         });
 
-        view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (wordListWrapper.addWordToWordList(addField.getText().toString())){
-                    Toast.makeText(getContext(), getString(R.string.hangman_toast_add_successful), Toast.LENGTH_LONG).show();
-                    updateWordListListView();
-                } else {
-                    Toast.makeText(getContext(), getString(R.string.hangman_toast_add_failed), Toast.LENGTH_LONG).show();
-                }
-                addField.setText("");
+        view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (wordListWrapper.addWordToWordList(addField.getText().toString())) {
+                            Toast.makeText(getContext(),
+                                    getString(R.string.hangman_toast_add_successful),
+                                    Toast.LENGTH_LONG).show();
+                            updateWordListListView();
+                        } else {
+                            Toast.makeText(getContext(),
+                                    getString(R.string.hangman_toast_add_failed),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                        addField.setText("");
 
-            }
-        });
+                    }
+                });
 
-        view.findViewById(R.id.hangmanRemoveWordButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String word = removeField.getText().toString();
-                if (wordList.isStandardWord(word)) {
-                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_standard_word), Toast.LENGTH_LONG).show();
-                }
-                else if (wordListWrapper.removeWordFromWordList(word)){
-                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_successful), Toast.LENGTH_LONG).show();
-                    updateWordListListView();
-                } else {
-                    Toast.makeText(getContext(), getString(R.string.hangman_toast_remove_failed), Toast.LENGTH_LONG).show();
-                }
-                removeField.setText("");
+        view.findViewById(R.id.hangmanRemoveWordButton).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String word = removeField.getText().toString();
+                        if (wordList.isStandardWord(word)) {
+                            Toast.makeText(getContext(),
+                                    getString(R.string.hangman_toast_remove_standard_word),
+                                    Toast.LENGTH_LONG).show();
+                        } else if (wordListWrapper.removeWordFromWordList(word)) {
+                            Toast.makeText(getContext(),
+                                    getString(R.string.hangman_toast_remove_successful),
+                                    Toast.LENGTH_LONG).show();
+                            updateWordListListView();
+                        } else {
+                            Toast.makeText(getContext(),
+                                    getString(R.string.hangman_toast_remove_failed),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                        removeField.setText("");
 
-            }
-        });
+                    }
+                });
 
-        wordListToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    wordListListView.setVisibility(View.VISIBLE);
-                }
-                else {
-                    wordListListView.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
+        wordListToggleButton.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            wordListListView.setVisibility(View.VISIBLE);
+                        } else {
+                            wordListListView.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
 
     }
 

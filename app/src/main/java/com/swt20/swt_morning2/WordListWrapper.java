@@ -23,26 +23,34 @@ public class WordListWrapper {
         String lang = Locale.getDefault().getDisplayLanguage();
 
         if (lang.contains("de")) {
-            sharedPreferences = fragment.requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
+            sharedPreferences = fragment.requireContext().getSharedPreferences(
+                    "HANGMAN_WORDS_DE", 0);
             //sharedPreferences.edit().remove("HANGMAN_WORDS_DE").commit();
-            wordsJson = sharedPreferences.getString("HANGMAN_WORDS_DE", fragment.getString(R.string.hangman_default_words));
+            wordsJson = sharedPreferences.getString("HANGMAN_WORDS_DE",
+                    fragment.getString(R.string.hangman_default_words));
 
             this.wordList = gson.fromJson(wordsJson, WordList.class);
 
             // if we get standard values back store the initial list to the shared prefs
-            if (sharedPreferences.getString("HANGMAN_WORDS_DE", "test").equals("test")) {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(wordList).toString()).apply();
+            if (sharedPreferences.getString("HANGMAN_WORDS_DE",
+                    "test").equals("test")) {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_DE",
+                        gson.toJson(wordList).toString()).apply();
             }
         } else {
-            sharedPreferences = fragment.requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
+            sharedPreferences = fragment.requireContext().getSharedPreferences(
+                    "HANGMAN_WORDS_EN", 0);
             //sharedPreferences.edit().remove("HANGMAN_WORDS_EN").commit();
-            wordsJson = sharedPreferences.getString("HANGMAN_WORDS_EN", fragment.getString(R.string.hangman_default_words));
+            wordsJson = sharedPreferences.getString("HANGMAN_WORDS_EN",
+                    fragment.getString(R.string.hangman_default_words));
 
             this.wordList = gson.fromJson(wordsJson, WordList.class);
 
             // if we get standard values back store the initial list to the shared prefs
-            if (sharedPreferences.getString("HANGMAN_WORDS_EN", "test").equals("test")) {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(wordList).toString()).apply();
+            if (sharedPreferences.getString("HANGMAN_WORDS_EN",
+                    "test").equals("test")) {
+                sharedPreferences.edit().putString("HANGMAN_WORDS_EN",
+                        gson.toJson(wordList).toString()).apply();
             }
         }
 
@@ -53,9 +61,11 @@ public class WordListWrapper {
         if (this.wordList.addWord(word)) {
             Gson gson = new Gson();
             if (lang.contains("de")) {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this.wordList).toString()).apply();
+                sharedPreferences.edit().putString("HANGMAN_WORDS_DE",
+                        gson.toJson(this.wordList).toString()).apply();
             } else {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this.wordList).toString()).apply();
+                sharedPreferences.edit().putString("HANGMAN_WORDS_EN",
+                        gson.toJson(this.wordList).toString()).apply();
             }
             return true;
         }
@@ -67,9 +77,11 @@ public class WordListWrapper {
         if (this.wordList.removeWord(word)) {
             Gson gson = new Gson();
             if (lang.contains("de")) {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_DE", gson.toJson(this.wordList).toString()).apply();
+                sharedPreferences.edit().putString("HANGMAN_WORDS_DE",
+                        gson.toJson(this.wordList).toString()).apply();
             } else {
-                sharedPreferences.edit().putString("HANGMAN_WORDS_EN", gson.toJson(this.wordList).toString()).apply();
+                sharedPreferences.edit().putString("HANGMAN_WORDS_EN",
+                        gson.toJson(this.wordList).toString()).apply();
             }
             return true;
         }
@@ -94,9 +106,9 @@ public class WordListWrapper {
         }
 
         boolean addWord(String word) {
-            if (standardWords.contains(word) || customWords.contains(word) || word.length() < 2)
+            if (standardWords.contains(word) || customWords.contains(word) || word.length() < 2) {
                 return false;
-            else {
+            } else {
                 customWords.add(word);
                 return true;
             }
