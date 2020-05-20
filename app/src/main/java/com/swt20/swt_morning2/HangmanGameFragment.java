@@ -142,8 +142,6 @@ public class HangmanGameFragment extends Fragment {
                     textViewWord2Guess.setText(word2guessViewtext);
                 } else {
                     tryCounter = tryCounter + 1;
-                    //Toast.makeText(getContext(),
-                    // "Incorrect guess nr " + tryCounter, Toast.LENGTH_LONG).show();
                     tryedCharacters.add(chr);
                     switch (tryCounter) {
                         case 1:
