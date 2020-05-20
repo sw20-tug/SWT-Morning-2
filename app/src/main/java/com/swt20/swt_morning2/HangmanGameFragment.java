@@ -50,6 +50,7 @@ public class HangmanGameFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private Integer tryCounter;
     private List<Character> tryedCharacters;
+    private ImageView feedbackView;
 
     @Override
     public View onCreateView(
@@ -80,6 +81,7 @@ public class HangmanGameFragment extends Fragment {
         textViewWord2Guess = view.findViewById(R.id.textView_word2guess);
         tryCounter = 0;
         tryedCharacters = new ArrayList<Character>();
+        feedbackView = view.findViewById(R.id.feedbackView);
         ;
         //TODO TCs
 
@@ -101,6 +103,7 @@ public class HangmanGameFragment extends Fragment {
                 textView.setVisibility(View.VISIBLE);
                 nextChar.setVisibility(View.VISIBLE);
                 view.findViewById(R.id.button_playagain).setVisibility(View.INVISIBLE);
+                feedbackView.setImageResource(0);
             }
         });
 
@@ -136,6 +139,34 @@ public class HangmanGameFragment extends Fragment {
                     tryCounter++;
                     //Toast.makeText(getContext(), "Incorrect guess nr " + tryCounter, Toast.LENGTH_LONG).show();
                     tryedCharacters.add(chr);
+                    switch (tryCounter) {
+                        case 1:
+                            feedbackView.setImageResource(R.drawable.hangman_1);
+                            break;
+                        case 2:
+                            feedbackView.setImageResource(R.drawable.hangman_2);
+                            break;
+                        case 3:
+                            feedbackView.setImageResource(R.drawable.hangman_3);
+                            break;
+                        case 4:
+                            feedbackView.setImageResource(R.drawable.hangman_4);
+                            break;
+                        case 5:
+                            feedbackView.setImageResource(R.drawable.hangman_5);
+                            break;
+                        case 6:
+                            feedbackView.setImageResource(R.drawable.hangman_6);
+                            break;
+                        case 7:
+                            feedbackView.setImageResource(R.drawable.hangman_7);
+                            break;
+                        case 8:
+                            feedbackView.setImageResource(R.drawable.hangman_8);
+                            break;
+                        default:
+                            feedbackView.setImageResource(0);
+                    }
                     //todo maybe add used wrong elements to a list for the user
                 }
                 nextChar.setText("");
@@ -161,7 +192,7 @@ public class HangmanGameFragment extends Fragment {
         st.addScore(Game.HANGMAN, points);
         String scoreText = Integer.toString(st.getScore(Game.HANGMAN));
 
-        Toast.makeText(getContext(), scoreText, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), scoreText, Toast.LENGTH_LONG).show();
         //Toast.makeText(getContext(), getString(R.string.hangman_lose), Toast.LENGTH_LONG).show();
         tryCounter = 0;
         tryedCharacters.clear();
