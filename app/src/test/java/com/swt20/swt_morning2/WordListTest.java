@@ -15,24 +15,24 @@ public class WordListTest {
     public void testWordListJsonParsing() {
         boolean found = false;
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "    \"Mensch\",\n" +
-                "    \"Chrysantheme\",\n" +
-                "    \"Kernspintomografie\",\n" +
-                "    \"Zucchini\",\n" +
-                "    \"Rueckgrat\",\n" +
-                "    \"unentgeltlich\",\n" +
-                "    \"Verlies\",\n" +
-                "    \"Terrasse\",\n" +
-                "    \"Quarzuhr\"\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "    \"Mensch\",\n"
+                + "    \"Chrysantheme\",\n"
+                + "    \"Kernspintomografie\",\n"
+                + "    \"Zucchini\",\n"
+                + "    \"Rueckgrat\",\n"
+                + "    \"unentgeltlich\",\n"
+                + "    \"Verlies\",\n"
+                + "    \"Terrasse\",\n"
+                + "    \"Quarzuhr\"\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         for (int i = 0; i < 100; i++) {
             if (wordList.getRandomWord().equalsIgnoreCase("Apfelbaum")) {
@@ -47,15 +47,15 @@ public class WordListTest {
     public void testAddCustomWord() {
         boolean found = false;
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "Dog";
 
@@ -73,15 +73,15 @@ public class WordListTest {
     @Test
     public void testAddCustomWordAlreadyInStandardWords() {
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "Test";
 
@@ -94,15 +94,15 @@ public class WordListTest {
     @Test
     public void testAddCustomWordTwice() {
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "Dog";
 
@@ -120,15 +120,15 @@ public class WordListTest {
     @Test
     public void testRemoveStandardWord() {
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "Test";
 
@@ -141,16 +141,16 @@ public class WordListTest {
     @Test
     public void testRemoveCustomWord() {
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "    \"Temp\"\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "    \"Temp\"\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "Temp";
 
@@ -163,15 +163,15 @@ public class WordListTest {
     @Test
     public void testRemoveNonExistingWord() {
         Gson gson = new Gson();
-        WordListWrapper.WordList wordList = gson.fromJson("{\n" +
-                "  \"standardWords\": [\n" +
-                "    \"Test\",\n" +
-                "    \"Apfelbaum\",\n" +
-                "    \"Auto\",\n" +
-                "  ],\n" +
-                "  \"customWords\": [\n" +
-                "  ]\n" +
-                "}", WordListWrapper.WordList.class);
+        WordListWrapper.WordList wordList = gson.fromJson("{\n"
+                + "  \"standardWords\": [\n"
+                + "    \"Test\",\n"
+                + "    \"Apfelbaum\",\n"
+                + "    \"Auto\",\n"
+                + "  ],\n"
+                + "  \"customWords\": [\n"
+                + "  ]\n"
+                + "}", WordListWrapper.WordList.class);
 
         String newWord = "asd";
 
