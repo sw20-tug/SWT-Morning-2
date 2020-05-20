@@ -44,19 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/ttt_text_color_p2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/ttt_text_color_p2"
-                android:textSize="18sp" />
-
-            <TableLayout
-                android:id="@+id/ttt_color_choice_p2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
         </LinearLayout>
     </ScrollView>
 

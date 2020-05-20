@@ -8,8 +8,7 @@
 
     <string name="ttt_menu_fragment_label">TTT Menü</string>
     <string name="ttt_game_fragment_label">TTT Spiel</string>
-    <string name="ttt_text_color_p1">Farbe Spieler 1</string>
-    <string name="ttt_text_color_p2">Farbe Spieler 2</string>
+    <string name="ttt_text_color_p1">Farbauswahl</string>
 
     <string name="welcome_screen_headline">Spiele Sammlung</string>
     <string name="tic_tac_toe_text">TicTacToe</string>

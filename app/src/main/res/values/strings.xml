@@ -8,8 +8,7 @@
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
-    <string name="ttt_text_color_p1">Color Player 1</string>
-    <string name="ttt_text_color_p2">Color Player 2</string>
+    <string name="ttt_text_color_p1">Color Selection</string>
 
 
     <string name="welcome_screen_headline">Games Collection</string>

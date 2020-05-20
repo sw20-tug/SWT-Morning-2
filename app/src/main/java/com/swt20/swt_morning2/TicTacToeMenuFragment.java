@@ -25,12 +25,14 @@ public class TicTacToeMenuFragment extends Fragment {
 
         private RelativeLayout view;
         private int resId;
+        private int invertedResId;
         private String player;
 
         private ColorChoice(RelativeLayout view, int resId, String player) {
             this.view = view;
             this.resId = resId;
             this.player = player;
+            this.invertedResId = 0;
         }
 
     }
@@ -57,42 +59,39 @@ public class TicTacToeMenuFragment extends Fragment {
 
         // create color selection in GUI
         TableLayout tableColorChoiceP1 = view.findViewById(R.id.ttt_color_choice_p1);
-        TableLayout tableColorChoiceP2 = view.findViewById(R.id.ttt_color_choice_p2);
 
         ArrayList<ColorChoice> choicesP1 = createColorChoicesFromDrawables("^x_[0-9a-fA-F]{6}$",
                 TicTacToeGameFragment.DRAWABLE_FIRST_PLAYER);
         ArrayList<ColorChoice> choicesP2 = createColorChoicesFromDrawables("^o_[0-9a-fA-F]{6}$",
                 TicTacToeGameFragment.DRAWABLE_SECOND_PLAYER);
 
-        fillTableWithChoices(tableColorChoiceP1, choicesP1);
-        fillTableWithChoices(tableColorChoiceP2, choicesP2);
+        for (int i = 0; i < choicesP1.size(); i++) {
+            choicesP1.get(i).invertedResId = choicesP2.get((i + 1) % choicesP2.size()).resId;
+            choicesP2.get((i + 1) % choicesP2.size()).invertedResId = choicesP1.get(i).resId;
+        }
 
-        setupSelectionLogic(choicesP1);
-        setupSelectionLogic(choicesP2);
+        ArrayList<ColorChoice> allChoices = choicesP1;
+        allChoices.addAll(choicesP2);
 
-        loadColorSelection(choicesP1, choicesP2);
+        fillTableWithChoices(tableColorChoiceP1, allChoices);
+
+        setupSelectionLogic(allChoices);
+
+        loadColorSelection(allChoices);
 
     }
 
-    private void loadColorSelection(ArrayList<ColorChoice> chP1, ArrayList<ColorChoice> chP2) {
+    private void loadColorSelection(ArrayList<ColorChoice> chP1) {
 
         // load from shared preferences
         SharedPreferences options = this.getContext().getApplicationContext()
                 .getSharedPreferences("TicTacToe_Options", 0);
         int resP1 = options.getInt(TicTacToeGameFragment.DRAWABLE_FIRST_PLAYER,
                 TicTacToeGameFragment.DEFAULT_DRAWABLE_FIRST_PLAYER);
-        int resP2 = options.getInt(TicTacToeGameFragment.DRAWABLE_SECOND_PLAYER,
-                TicTacToeGameFragment.DEFAULT_DRAWABLE_SECOND_PLAYER);
 
         // select values in the GUI
         for (ColorChoice choice : chP1) {
             if (choice.resId == resP1) {
-                choice.view.getChildAt(0).callOnClick();
-                break;
-            }
-        }
-        for (ColorChoice choice : chP2) {
-            if (choice.resId == resP2) {
                 choice.view.getChildAt(0).callOnClick();
                 break;
             }
@@ -116,7 +115,9 @@ public class TicTacToeMenuFragment extends Fragment {
                         otherChoice.view.getChildAt(0).setBackgroundColor(0x008bc34a);
                     }
                     choice.view.getChildAt(0).setBackgroundColor(0xff8bc34a);
-                    storeColorSelection(choice.player, choice.resId);
+                    storeColorSelection(TicTacToeGameFragment.DRAWABLE_FIRST_PLAYER, choice.resId);
+                    storeColorSelection(TicTacToeGameFragment.DRAWABLE_SECOND_PLAYER,
+                            choice.invertedResId);
                 }
             });
         }
