@@ -60,7 +60,7 @@ public class WordListTest {
         String newWord = "Dog";
 
         if (!wordList.addWord(newWord)) {
-            assert(false);
+            assert (false);
         }
 
         if (wordList.customWords.contains(newWord)) {
