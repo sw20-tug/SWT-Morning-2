@@ -6,8 +6,6 @@ import android.view.View;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import junit.framework.AssertionFailedError;
-
 import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
@@ -61,7 +59,7 @@ public class HangmanTests {
                     }
                     assertThat(st.getScore(Game.HANGMAN), is(oldScore - 2));
                     return;
-                } catch (AssertionFailedError e) {
+                } catch (Exception e) {
                     // View not displayed
                 }
 
@@ -73,7 +71,7 @@ public class HangmanTests {
                 }
                 assertThat(st.getScore(Game.HANGMAN), is(oldScore + 1));
                 return;
-            } catch (AssertionFailedError e) {
+            } catch (Exception e) {
                 // View not displayed
             }
         }
@@ -102,7 +100,7 @@ public class HangmanTests {
                     } else {
                         return;
                     }
-                } catch (AssertionFailedError e) {
+                } catch (Exception e) {
                     // View not displayed
                 }
             }
@@ -133,7 +131,7 @@ public class HangmanTests {
                         matches(withDrawable(R.drawable.hangman_1)));
                 return;
                 // View displayed
-            } catch (AssertionFailedError e) {
+            } catch (Exception e) {
                 // View not displayed
             }
         }
@@ -162,7 +160,7 @@ public class HangmanTests {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 return;
                 // View displayed
-            } catch (AssertionFailedError e) {
+            } catch (Exception e) {
                 // View not displayed
             }
         }
@@ -173,7 +171,8 @@ public class HangmanTests {
     public void scoreReduced() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
-        int old_score = st.getScore(Game.HANGMAN);
+        int oldScore;
+        oldScore = st.getScore(Game.HANGMAN);
         // Go from Main Menu to Hangman Menu
         onView(withId(R.id.hangmanButton)).perform(click());
 
@@ -189,7 +188,7 @@ public class HangmanTests {
                 onView(isRoot()).perform(pressBack());
                 // View displayed
                 break;
-            } catch (AssertionFailedError e) {
+            } catch (Exception e) {
                 // View not displayed
             }
         }
@@ -199,7 +198,7 @@ public class HangmanTests {
             // View not displayed
         }
         ScoreTracker st2 = new ScoreTracker(activity.getApplicationContext());
-        assertThat(st2.getScore(Game.HANGMAN), is(old_score - 2));
+        assertThat(st2.getScore(Game.HANGMAN), is(oldScore - 2));
         //assertThat(false,is(true));
     }
 
