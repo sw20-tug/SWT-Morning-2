@@ -34,13 +34,24 @@
 
     <string name="hangman_question_guess">Enter your guess:</string>
     <string name="hangman_question_txt">guess?</string>
-    <string name="hangman_WIN">\"Congratulations. You won!\"</string>
+    <string name="hangman_WIN">Congratulations. You won!</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"fuchsia\",     \"jigsaw\",     \"jogging\",     \"jukebox\",     \"kilobyte\",     \"matrix\",     \"unworthy\",     \"schnapps\",     \"sphinx\",     \"bookworm\",     \"cryptography\",     \"razzmatazz\"    ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Play again</string>
+    <string name="hangman_add_word">Add Word</string>
+    <string name="hangman_remove_word">Remove Word</string>
+    <string name="hangman_input_word_text_hint">Input Word</string>
+    <string name="hangman_toast_add_successful">Word added successfully</string>
+    <string name="hangman_toast_add_failed">Word already in use</string>
+    <string name="hangman_toast_remove_successful">Word removed successfully</string>
+    <string name="hangman_toast_remove_failed">Word not found</string>
+    <string name="hangman_toast_remove_standard_word">Can not delete standard word</string>
+    <string name="hangman_word_list_toggle_on">Hide word list</string>
+    <string name="hangman_word_list_toggle_off">Show word list</string>
+
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
     <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>
-    <string name="hangman_lose">\"Congratulations. You lost!\"</string>
+    <string name="hangman_lose">Congratulations. You lost!</string>
     <string name="imageViewDescription">This is the ImageView for the user feedback</string>
 
 </resources>

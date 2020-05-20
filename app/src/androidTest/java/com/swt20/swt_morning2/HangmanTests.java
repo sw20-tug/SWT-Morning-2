@@ -26,6 +26,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.StringContains.containsString;
 
 
+
 @RunWith(AndroidJUnit4.class)
 public class HangmanTests {
 
@@ -168,6 +169,70 @@ public class HangmanTests {
     }
 
     @Test
+    public void addCustomWord() {
+
+        // Go from Main Menu to Hangman Menu
+        onView(withId(R.id.hangmanButton)).perform(click());
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+        onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanAddWordButton)).perform(click());
+
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+
+    }
+
+
+    @Test
+    public void doubledeleteCustomWord() {
+
+        // Go from Main Menu to Hangman Menu
+        onView(withId(R.id.hangmanButton)).perform(click());
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+        onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanAddWordButton)).perform(click());
+
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+    }
+
+    @Test
+    public void doubleAddCustomWord() {
+
+        // Go from Main Menu to Hangman Menu
+        onView(withId(R.id.hangmanButton)).perform(click());
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+        onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanAddWordButton)).perform(click());
+
+
+        onView(withId(R.id.hangmanAddWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanAddWordButton)).perform(click());
+
+
+        onView(withId(R.id.hangmanRemoveWordTextInput)).perform(typeText("hello"));
+        onView(withId(R.id.hangmanRemoveWordButton)).perform(click());
+
+
+    }
+
     public void scoreReduced() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
@@ -214,3 +279,4 @@ public class HangmanTests {
     }
 
 }
+

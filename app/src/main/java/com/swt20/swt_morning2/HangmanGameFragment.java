@@ -46,7 +46,7 @@ public class HangmanGameFragment extends Fragment {
     private String word2guess;
     private String word2guessViewtext = "";
     private TextView textViewWord2Guess;
-    private WordList wordList;
+    private WordListWrapper.WordList wordList;
     private Integer tryCounter;
     private List<Character> tryedCharacters;
     private ImageView feedbackView;
@@ -57,21 +57,7 @@ public class HangmanGameFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-
-        String lang = Locale.getDefault().getDisplayLanguage();
-        SharedPreferences sharedPreferences =
-                requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
-        if (lang.contains("de")) {
-            sharedPreferences =
-                    requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
-        } else {
-            sharedPreferences =
-                    requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
-        }
-        String wordsJson;
-        wordsJson = sharedPreferences.getString("WORDS", getString(R.string.hangman_default_words));
-        Gson gson = new Gson();
-        wordList = gson.fromJson(wordsJson, WordList.class);
+        wordList = new WordListWrapper(this).wordList;
 
         return inflater.inflate(R.layout.hangman_game, container, false);
     }
@@ -86,7 +72,6 @@ public class HangmanGameFragment extends Fragment {
         tryCounter = 0;
         tryedCharacters = new ArrayList<Character>();
         feedbackView = view.findViewById(R.id.feedbackView);
-        ;
         //TODO TCs
 
         word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
@@ -145,6 +130,7 @@ public class HangmanGameFragment extends Fragment {
                     tryedCharacters.add(chr);
                     switch (tryCounter) {
                         case 1:
+                            feedbackView.setScaleType(ImageView.ScaleType.FIT_CENTER);
                             feedbackView.setImageResource(R.drawable.hangman_1);
                             break;
                         case 2:
@@ -211,16 +197,4 @@ public class HangmanGameFragment extends Fragment {
 
     }
 
-    public class WordList {
-        public List<String> standardWords;
-        public List<String> customWords;
-
-        public String getRandomWord() {
-            List<String> tmpList = new ArrayList<String>();
-            tmpList.addAll(standardWords);
-            tmpList.addAll(customWords);
-            Random rand = new Random();
-            return tmpList.get(rand.nextInt(tmpList.size()));
-        }
-    }
 }
