@@ -13,6 +13,14 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_TicTacToeMenu"
             app:destination="@id/TicTacToeMenuFragment" />
+
+        <action
+            android:id="@+id/action_mainMenuFragment_to_HangmanMenu"
+            app:destination="@id/HangmanMenuFragment" />
+
+        <action
+            android:id="@+id/action_mainMenuFragment_to_TilesMenu"
+            app:destination="@id/TilesMenuFragment" />
     </fragment>
 
     <fragment
@@ -30,6 +38,56 @@
         android:name="com.swt20.swt_morning2.TicTacToeGameFragment"
         android:label="@string/ttt_game_fragment_label"
         tools:layout="@layout/tictactoe_game">
+    </fragment>
+
+    <fragment
+        android:id="@+id/HangmanMenuFragment"
+        android:name="com.swt20.swt_morning2.HangmanMenuFragment"
+        android:label="@string/ttt_menu_fragment_label"
+        tools:layout="@layout/hangman_menu">
+
+        <action
+            android:id="@+id/action_Menu_to_Game"
+            app:destination="@id/HangmanGameFragment" />
+        <action
+            android:id="@+id/action_Menu_to_MainMenu"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/HangmanGameFragment"
+        android:name="com.swt20.swt_morning2.HangmanGameFragment"
+        android:label="@string/ttt_menu_fragment_label"
+        tools:layout="@layout/hangman_game">
+
+        <action
+            android:id="@+id/action_HangmanGameFragment_to_HangmanMenuFragment"
+            app:destination="@id/HangmanMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TilesMenuFragment"
+        android:name="com.swt20.swt_morning2.WhiteTilesMenuFragment"
+        android:label="@string/tiles_menu_fragment_label"
+        tools:layout="@layout/tiles_menu">
+
+        <action
+            android:id="@+id/action_Menu_to_Game"
+            app:destination="@id/TilesGameFragment" />
+        <action
+            android:id="@+id/action_Menu_to_MainMenu"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TilesGameFragment"
+        android:name="com.swt20.swt_morning2.WhiteTilesFragment"
+        android:label="@string/tiles_menu_fragment_label"
+        tools:layout="@layout/tiles_game">
+
+        <action
+            android:id="@+id/action_TilesGameFragment_to_TilesMenuFragment"
+            app:destination="@id/TilesMenuFragment" />
     </fragment>
 
 </navigation>

@@ -29,6 +29,7 @@ task codeCoverageReport(type: JacocoReport) {
 
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
+    jacoco.excludes = ['jdk.internal.*']
 }
 
 
@@ -74,6 +75,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
 }
 
@@ -92,4 +97,5 @@ dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
     testImplementation 'org.robolectric:robolectric:4.3'
     androidTestImplementation 'androidx.test:rules:1.2.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

@@ -8,9 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 public class TicTacToeGameFragment extends Fragment {
 
@@ -60,6 +62,19 @@ public class TicTacToeGameFragment extends Fragment {
             public void onClick(View view) {
                 if (logic.turn(x, y)) {
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
+                    TicTacToeGameLogic.Player winner = logic.getWinner();
+                    if (winner != null) {
+                        String text;
+                        ScoreTracker tracker = new ScoreTracker(imageView.getContext());
+                        if (winner.equals(logic.getFirst())) {
+                            text = getResources().getString(R.string.you_win);
+                        } else {
+                            text = getResources().getString(R.string.you_lose);
+                        }
+                        logic.changeScore(winner, tracker);
+                        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+                        getActivity().onBackPressed();
+                    }
                 }
             }
         });

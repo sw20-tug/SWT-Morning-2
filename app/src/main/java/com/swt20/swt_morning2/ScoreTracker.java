@@ -20,6 +20,10 @@ public class ScoreTracker {
 
     public void setSharedPreferences(SharedPreferences pref) {
         this.pref = pref;
+        reloadScore(pref);
+    }
+
+    private void reloadScore(SharedPreferences pref) {
         hangmanScore = pref.getInt(HANGMAN_SCORE, 0);
         ticTacToeScore = pref.getInt(TICTACTOE_SCORE, 0);
         tilesScore = pref.getInt(TILES_SCORE, 0);
@@ -41,6 +45,7 @@ public class ScoreTracker {
 
 
     public int getScore(Game game) {
+        reloadScore(this.pref);
         validatePreferences();
         switch (game) {
             case HANGMAN:
