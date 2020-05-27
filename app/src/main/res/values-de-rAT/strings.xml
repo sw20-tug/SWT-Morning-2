@@ -56,5 +56,6 @@
     <string name="white_tiles_timer">Timer</string>
     <string name="white_tiles_time">Zeit in Sekunden</string>
     <string name="white_tiles_time_hint">Zeit eingeben</string>
+    <string name="white_tiles_remaining_time">Verbleibende Zeit</string>
 
 </resources>
