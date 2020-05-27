@@ -19,6 +19,7 @@ public class TicTacToeGameFragment extends Fragment {
 
     static final String DRAWABLE_FIRST_PLAYER = "DRAWABLE_FIRST_PLAYER";
     static final String DRAWABLE_SECOND_PLAYER = "DRAWABLE_SECOND_PLAYER";
+    static final String AUTOPLAYER = "AUTOPLAYER";
     static final int DEFAULT_DRAWABLE_FIRST_PLAYER = R.drawable.x_ff0000;
     static final int DEFAULT_DRAWABLE_SECOND_PLAYER = R.drawable.o_0000ff;
 
@@ -60,23 +61,32 @@ public class TicTacToeGameFragment extends Fragment {
     private void setupCell(final int x, final int y, final ImageView imageView) {
         imageView.setImageResource(R.drawable.empty);
         imageView.setOnClickListener(new View.OnClickListener() {
+            private void checkWin() {
+                TicTacToeGameLogic.Player winner = logic.getWinner();
+                if (winner != null) {
+                    String text;
+                    ScoreTracker tracker = new ScoreTracker(imageView.getContext());
+                    if (winner.equals(logic.getFirst())) {
+                        text = getResources().getString(R.string.you_win);
+                    } else {
+                        text = getResources().getString(R.string.you_lose);
+                    }
+                    logic.changeScore(winner, tracker);
+                    Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+                    getActivity().onBackPressed();
+                }
+            }
+
             @Override
             public void onClick(View view) {
                 if (logic.turn(x, y)) {
+
+                    // outsource to fkt.
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
-                    TicTacToeGameLogic.Player winner = logic.getWinner();
-                    if (winner != null) {
-                        String text;
-                        ScoreTracker tracker = new ScoreTracker(imageView.getContext());
-                        if (winner.equals(logic.getFirst())) {
-                            text = getResources().getString(R.string.you_win);
-                        } else {
-                            text = getResources().getString(R.string.you_lose);
-                        }
-                        logic.changeScore(winner, tracker);
-                        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
-                        getActivity().onBackPressed();
-                    }
+                    checkWin();
+                    // TODO ADD Computer Player HERE
+
+                    checkWin();
                 }
             }
         });
