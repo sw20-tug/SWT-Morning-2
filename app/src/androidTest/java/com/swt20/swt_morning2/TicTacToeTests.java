@@ -22,11 +22,13 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.StringContains.containsString;
 
 @RunWith(AndroidJUnit4.class)
 public class TicTacToeTests {
@@ -210,4 +212,73 @@ public class TicTacToeTests {
 
     }
 
+    private boolean clickField(int rid, int colourid) {
+        try {
+            onView(withId(rid)).check(matches(EspressoTestsMatchers.withDrawable(R.drawable.empty)));
+        } catch (Error e) {
+            // Not empty -- continue
+            return false;
+        }
+
+        onView(withId(rid)).perform(click());
+        onView(withId(rid)).check(matches(EspressoTestsMatchers.withDrawable(colourid)));
+        return true;
+    }
+
+
+    @Test
+    public void autoplayerExists() {
+        int colourid = R.drawable.o_009933;
+        onView(withId(R.id.ticTacToeButton)).perform(click());
+        onView(withId(R.id.switch1)).perform(click());
+        onView(EspressoTestsMatchers.withDrawable(colourid)).perform(click());
+        onView(withId(R.id.ttt_menu_button)).perform(click());
+        //in Game
+        while (true) {
+            try {
+                onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+                break;
+            } catch (Exception e) {
+                // View not displayed
+            }
+
+            if (clickField(R.id.imageView, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView2, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView3, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView4, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView5, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView6, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView7, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView8, colourid)) {
+                continue;
+            }
+
+            if (clickField(R.id.imageView9, colourid)) {
+                continue;
+            }
+
+            break;
+        }
+    }
 }
