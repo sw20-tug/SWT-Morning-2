@@ -38,8 +38,10 @@ public class TicTacToeGameFragment extends Fragment {
                 .getInt(DRAWABLE_FIRST_PLAYER, DEFAULT_DRAWABLE_FIRST_PLAYER);
         int drawableSecondPlayer = options
                 .getInt(DRAWABLE_SECOND_PLAYER, DEFAULT_DRAWABLE_SECOND_PLAYER);
+        boolean autoplayer = options
+                .getBoolean(AUTOPLAYER, false);
 
-        logic = new TicTacToeGameLogic(drawableFirstPlayer, drawableSecondPlayer);
+        logic = new TicTacToeGameLogic(drawableFirstPlayer, drawableSecondPlayer, autoplayer);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.tictactoe_game, container, false);
     }
@@ -84,8 +86,18 @@ public class TicTacToeGameFragment extends Fragment {
                     // outsource to fkt.
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
                     checkWin();
-                    // TODO ADD Computer Player HERE
-
+                    logic.autoplayerTurn();
+                    TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
+                    for (int y = 0; y < gameField.getChildCount(); y++) {
+                        final TableRow currentRow = (TableRow) gameField.getChildAt(y);
+                        for (int x = 0; x < currentRow.getChildCount(); x++) {
+                            final ImageView currentImageView = (ImageView) currentRow.getChildAt(x);
+                            if (logic.getCell(x, y).getOwner() != null) {
+                                currentImageView.setImageResource(logic.getCell(x, y).getOwner()
+                                        .getResId());
+                            }
+                        }
+                    }
                     checkWin();
                 }
             }

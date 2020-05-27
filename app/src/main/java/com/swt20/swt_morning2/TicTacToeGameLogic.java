@@ -1,5 +1,7 @@
 package com.swt20.swt_morning2;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class TicTacToeGameLogic {
 
     public static class Player {
@@ -43,12 +45,14 @@ public class TicTacToeGameLogic {
 
     private Player first;
     private Player second;
+    private boolean autoplayer;
     private Cell[][] cells = new Cell[3][3];
     private int turnCount = 0;
 
-    public TicTacToeGameLogic(int firstPlayerResId, int secondPlayerResId) {
+    public TicTacToeGameLogic(int firstPlayerResId, int secondPlayerResId, boolean autoplayer) {
         this.first = new Player(firstPlayerResId);
         this.second = new Player(secondPlayerResId);
+        this.autoplayer = autoplayer;
         for (int i = 0; i < 9; i++) {
             cells[i % 3][i / 3] = new Cell();
         }
@@ -70,6 +74,20 @@ public class TicTacToeGameLogic {
         }
         return validPlay;
     }
+
+    public void autoplayerTurn() {
+        if (turnCount >= 9 || !this.autoplayer) {
+            return;
+        }
+        int x;
+        int y;
+        do {
+            x = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+            y = ThreadLocalRandom.current().nextInt(0, 2 + 1);
+        } while (!assignCell(x, y, second));
+        turnCount++;
+    }
+
 
     public Player getWinner() {
         for (int i = 0; i < 3; i++) {
