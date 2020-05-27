@@ -53,5 +53,8 @@
     <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>
     <string name="hangman_lose">Congratulations. You lost!</string>
     <string name="imageViewDescription">This is the ImageView for the user feedback</string>
+    <string name="white_tiles_timer">Timer</string>
+    <string name="white_tiles_time">Time in seconds</string>
+    <string name="white_tiles_time_hint">Set Timer</string>
 
 </resources>
