@@ -35,24 +35,7 @@ public class WhiteTilesFragment extends Fragment {
         logic = new WhiteTilesGameLogic();
         super.onViewCreated(view, savedInstanceState);
 
-        WhiteTilesSettings settings = new WhiteTilesSettings(getContext().getApplicationContext());
-        timerEnabled = settings.getTimerEnabled();
-        timerSetting = settings.getTimerSetting();
-
-        timer = new CountDownTimer(timerSetting * 1000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                String remainingTime = String.valueOf(millisUntilFinished / 1000);
-                getRemainingTimeTextView(view).setText(remainingTime);
-            }
-
-            public void onFinish() {
-                whiteButtonClicked();
-            }
-
-        };
-
-        timer.start();
+        timerSetup(view);
 
         logic.scrambleButtons();
         colorButtons(view);
@@ -99,9 +82,37 @@ public class WhiteTilesFragment extends Fragment {
 
     }
 
+    private void timerSetup(View view) {
+        WhiteTilesSettings settings = new WhiteTilesSettings(getContext().getApplicationContext());
+        timerEnabled = settings.getTimerEnabled();
+        timerSetting = settings.getTimerSetting();
+
+        timer = new CountDownTimer(timerSetting * 1000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                String remainingTime = String.valueOf(millisUntilFinished / 1000);
+                getRemainingTimeTextView(view).setText(remainingTime);
+            }
+
+            public void onFinish() {
+                whiteButtonClicked();
+            }
+
+        };
+
+        if (timerEnabled) {
+            timer.start();
+        } else {
+            TextView remainingTimeTextView = view.findViewById(R.id.whiteTilesTimeText);
+            remainingTimeTextView.setText("");
+        }
+    }
+
     private void resetTimer() {
-        timer.cancel();
-        timer.start();
+        if (timerEnabled) {
+            timer.cancel();
+            timer.start();
+        }
     }
 
 
