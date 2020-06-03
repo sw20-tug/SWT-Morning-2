@@ -214,13 +214,26 @@ public class TicTacToeTests {
         try {
             onView(withId(rid)).check(matches(
                     EspressoTestsMatchers.withDrawable(R.drawable.empty)));
-        } catch (Error e) {
+        } catch (Throwable e) {
             // Not empty -- continue
             return false;
         }
 
-        onView(withId(rid)).perform(click());
-        onView(withId(rid)).check(matches(EspressoTestsMatchers.withDrawable(colourid)));
+        try {
+            onView(withId(rid)).perform(click());
+            try {
+                if (onView(withId(R.id.ttt_menu_button)) != null) {
+                    onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+                }
+                return false;
+            } catch (Throwable e) {
+                //empty
+            }
+            onView(withId(rid)).check(matches(EspressoTestsMatchers.withDrawable(colourid)));
+        } catch (Throwable e) {
+            onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+            return false;
+        }
         return true;
     }
 
@@ -250,4 +263,29 @@ public class TicTacToeTests {
             }
         }
     }
+
+    @Test
+    public void playToDraw() {
+        onView(withId(R.id.ticTacToeButton)).perform(click());
+        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.imageView)).perform(click());
+        onView(withId(R.id.imageView7)).perform(click());
+        onView(withId(R.id.imageView8)).perform(click());
+        onView(withId(R.id.imageView3)).perform(click());
+        onView(withId(R.id.imageView2)).perform(click());
+        onView(withId(R.id.imageView9)).perform(click());
+        onView(withId(R.id.imageView6)).perform(click());
+        onView(withId(R.id.imageView5)).perform(click());
+        onView(withId(R.id.imageView4)).perform(click());
+        try {
+            onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+        } catch (Exception e) {
+            assert (true);
+            return;
+        }
+        assert (false);
+
+    }
+
+
 }
