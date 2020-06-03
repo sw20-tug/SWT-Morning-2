@@ -85,7 +85,89 @@ public class TicTacToeGameLogic {
         }
         int x;
         int y;
+        boolean winnchance = true;
+        outer:
         do {
+            //check ROWS
+            for (int row = 0; row < 3 && winnchance; row++) {
+                int noAutoplayerFields = 0;
+                for (int col = 0; col < 3; col++) {
+                    if (cells[row][col].getOwner() != null
+                            && cells[row][col].getOwner().equals(this.second)) {
+                        noAutoplayerFields++;
+                    }
+                }
+                if (noAutoplayerFields >= 2) {
+                    boolean successful = false;
+                    for (int col = 0; col < 3; col++) {
+                        successful = assignCell(row, col, second);
+                        if (successful) {
+                            break outer;
+                        }
+                    }
+                }
+            }
+
+            //check COLS
+            for (int col = 0; col < 3 && winnchance; col++) {
+                int noAutoplayerFields = 0;
+                for (int row = 0; row < 3; row++) {
+                    if (cells[row][col].getOwner() != null
+                            && cells[row][col].getOwner().equals(this.second)) {
+                        noAutoplayerFields++;
+                    }
+                }
+                if (noAutoplayerFields >= 2) {
+                    boolean successful = false;
+                    for (int row = 0; row < 3; row++) {
+                        successful = assignCell(row, col, second);
+                        if (successful) {
+                            break outer;
+                        }
+                    }
+                }
+            }
+
+            //check DIAGS
+            {
+                int noAutoplayerFields = 0;
+                for (int i = 0; i < 3; i++) {
+                    if (cells[i][i].getOwner() != null
+                            && cells[i][i].getOwner().equals(this.second)) {
+                        noAutoplayerFields++;
+                    }
+                }
+                if (noAutoplayerFields >= 2) {
+                    boolean successful = false;
+                    for (int i = 0; i < 3; i++) {
+                        successful = assignCell(i, i, second);
+                        if (successful) {
+                            break outer;
+                        }
+                    }
+                }
+            }
+            {
+                int noAutoplayerFields = 0;
+                for (int i = 0; i < 3; i++) {
+                    if (cells[i][2 - i].getOwner() != null
+                            && cells[i][2 - i].getOwner().equals(this.second)) {
+                        noAutoplayerFields++;
+                    }
+                }
+                if (noAutoplayerFields >= 2) {
+                    boolean successful = false;
+                    for (int i = 0; i < 3; i++) {
+                        successful = assignCell(i, 2 - i, second);
+                        if (successful) {
+                            break outer;
+                        }
+                    }
+                }
+            }
+
+
+            winnchance = false;
             x = ThreadLocalRandom.current().nextInt(0, 2 + 1);
             y = ThreadLocalRandom.current().nextInt(0, 2 + 1);
         } while (!assignCell(x, y, second));
