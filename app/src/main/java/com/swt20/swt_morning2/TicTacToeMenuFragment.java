@@ -47,15 +47,15 @@ public class TicTacToeMenuFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final Switch autoplayer = view.findViewById(R.id.switch1);
 
         view.findViewById(R.id.ttt_menu_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Switch s = view.findViewById(R.id.switch1);
                 SharedPreferences options = getActivity().getApplicationContext()
                         .getSharedPreferences("TicTacToe_Options", 0);
                 SharedPreferences.Editor editor = options.edit();
-                editor.putBoolean(TicTacToeGameFragment.AUTOPLAYER, s.isChecked());
+                editor.putBoolean(TicTacToeGameFragment.AUTOPLAYER, autoplayer.isChecked());
                 editor.apply();
                 NavHostFragment.findNavController(TicTacToeMenuFragment.this)
                         .navigate(R.id.action_Menu_to_Game);

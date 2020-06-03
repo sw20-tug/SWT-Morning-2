@@ -50,17 +50,18 @@ public class TicTacToeGameFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
+        final TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
         for (int rowCount = 0; rowCount < gameField.getChildCount(); rowCount++) {
             final TableRow currentRow = (TableRow) gameField.getChildAt(rowCount);
             for (int colCount = 0; colCount < currentRow.getChildCount(); colCount++) {
                 final ImageView currentImageView = (ImageView) currentRow.getChildAt(colCount);
-                setupCell(colCount, rowCount, currentImageView);
+                setupCell(colCount, rowCount, currentImageView, gameField);
             }
         }
     }
 
-    private void setupCell(final int x, final int y, final ImageView imageView) {
+    private void setupCell(final int x, final int y, final ImageView imageView,
+                           final TableLayout gameField) {
         imageView.setImageResource(R.drawable.empty);
         imageView.setOnClickListener(new View.OnClickListener() {
             private void checkWin() {
@@ -87,7 +88,6 @@ public class TicTacToeGameFragment extends Fragment {
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
                     checkWin();
                     logic.autoplayerTurn();
-                    TableLayout gameField = ((TableLayout) view.findViewById(R.id.ttt_game_field));
                     for (int y = 0; y < gameField.getChildCount(); y++) {
                         final TableRow currentRow = (TableRow) gameField.getChildAt(y);
                         for (int x = 0; x < currentRow.getChildCount(); x++) {
