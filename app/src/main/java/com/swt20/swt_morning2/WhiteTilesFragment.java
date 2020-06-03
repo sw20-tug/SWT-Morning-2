@@ -2,6 +2,8 @@ package com.swt20.swt_morning2;
 
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -90,8 +92,13 @@ public class WhiteTilesFragment extends Fragment {
         timer = new CountDownTimer(timerSetting * 1000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                String remainingTime = String.valueOf(millisUntilFinished / 1000);
+                String remainingTime = String.valueOf(Math.round(millisUntilFinished / 1000.0));
                 getRemainingTimeTextView(view).setText(remainingTime);
+
+                if (millisUntilFinished < 1200) {
+                    ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                    toneGenerator.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+                }
             }
 
             public void onFinish() {
