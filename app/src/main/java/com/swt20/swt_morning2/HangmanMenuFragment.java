@@ -65,13 +65,14 @@ public class HangmanMenuFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        view.findViewById(R.id.hangmanStartGameButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(HangmanMenuFragment.this)
-                        .navigate(R.id.action_Menu_to_Game);
-            }
-        });
+        view.findViewById(R.id.hangmanStartGameButton)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NavHostFragment.findNavController(HangmanMenuFragment.this)
+                                .navigate(R.id.action_Menu_to_Game);
+                    }
+                });
 
         view.findViewById(R.id.hangmanAddWordButton).setOnClickListener(
                 new View.OnClickListener() {

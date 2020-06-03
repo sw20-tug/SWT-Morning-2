@@ -31,8 +31,6 @@ import static org.hamcrest.core.StringContains.containsString;
 @RunWith(AndroidJUnit4.class)
 public class HangmanTests {
 
-    private final static String TAG = HangmanTests.class.getSimpleName();
-
     @Rule
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
@@ -188,7 +186,6 @@ public class HangmanTests {
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 ScoreTracker finalScore = new ScoreTracker(activity.getApplicationContext());
                 assertThat(finalScore.getScore(Game.HANGMAN), is(oldScore - 2));
-                oldScore = finalScore.getScore(Game.HANGMAN);
                 break;
             } catch (AssertionError assertionError) {
                 ScoreTracker newScore = new ScoreTracker(activity.getApplicationContext());
