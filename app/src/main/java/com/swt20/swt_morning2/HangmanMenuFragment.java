@@ -65,7 +65,7 @@ public class HangmanMenuFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        view.findViewById(R.id.ttt_menu_button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.hangmanStartGameButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(HangmanMenuFragment.this)
