@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -18,6 +19,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import static java.lang.Math.ceil;
+import static java.lang.Math.getExponent;
 
 public class TicTacToeMenuFragment extends Fragment {
 
@@ -45,10 +47,16 @@ public class TicTacToeMenuFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final Switch autoplayer = view.findViewById(R.id.switch1);
 
         view.findViewById(R.id.ttt_menu_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences options = getActivity().getApplicationContext()
+                        .getSharedPreferences("TicTacToe_Options", 0);
+                SharedPreferences.Editor editor = options.edit();
+                editor.putBoolean(TicTacToeGameFragment.AUTOPLAYER, autoplayer.isChecked());
+                editor.apply();
                 NavHostFragment.findNavController(TicTacToeMenuFragment.this)
                         .navigate(R.id.action_Menu_to_Game);
             }
@@ -102,6 +110,7 @@ public class TicTacToeMenuFragment extends Fragment {
         editor.putInt(player, rid);
         editor.apply();
     }
+
 
     private void setupSelectionLogic(final ArrayList<ColorChoice> colorChoices) {
         for (final ColorChoice choice : colorChoices) {

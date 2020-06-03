@@ -210,4 +210,44 @@ public class TicTacToeTests {
 
     }
 
+    private boolean clickField(int rid, int colourid) {
+        try {
+            onView(withId(rid)).check(matches(
+                    EspressoTestsMatchers.withDrawable(R.drawable.empty)));
+        } catch (Error e) {
+            // Not empty -- continue
+            return false;
+        }
+
+        onView(withId(rid)).perform(click());
+        onView(withId(rid)).check(matches(EspressoTestsMatchers.withDrawable(colourid)));
+        return true;
+    }
+
+
+    @Test
+    public void autoplayerExists() {
+        int colourid = R.drawable.o_009933;
+        onView(withId(R.id.ticTacToeButton)).perform(click());
+        onView(withId(R.id.switch1)).perform(click());
+        onView(EspressoTestsMatchers.withDrawable(colourid)).perform(click());
+        onView(withId(R.id.ttt_menu_button)).perform(click());
+        //in Game
+        while (clickField(R.id.imageView, colourid)
+                || clickField(R.id.imageView2, colourid)
+                || clickField(R.id.imageView3, colourid)
+                || clickField(R.id.imageView4, colourid)
+                || clickField(R.id.imageView5, colourid)
+                || clickField(R.id.imageView6, colourid)
+                || clickField(R.id.imageView7, colourid)
+                || clickField(R.id.imageView8, colourid)
+                || clickField(R.id.imageView9, colourid)) {
+            try {
+                onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+                break;
+            } catch (Exception e) {
+                // View not displayed
+            }
+        }
+    }
 }
