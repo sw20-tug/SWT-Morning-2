@@ -250,4 +250,28 @@ public class TicTacToeTests {
             }
         }
     }
+    @Test
+    public void playToDraw() {
+        onView(withId(R.id.ticTacToeButton)).perform(click());
+        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.imageView)).perform(click());
+        onView(withId(R.id.imageView7)).perform(click());
+        onView(withId(R.id.imageView8)).perform(click());
+        onView(withId(R.id.imageView3)).perform(click());
+        onView(withId(R.id.imageView2)).perform(click());
+        onView(withId(R.id.imageView9)).perform(click());
+        onView(withId(R.id.imageView6)).perform(click());
+        onView(withId(R.id.imageView5)).perform(click());
+        onView(withId(R.id.imageView4)).perform(click());
+        try {
+            onView(withId(R.id.ttt_menu_button)).check(matches(isDisplayed()));
+        } catch (Exception e) {
+            assert (true);
+            return;
+        }
+        assert (false);
+
+    }
+
+
 }
