@@ -64,7 +64,7 @@ public class TicTacToeGameFragment extends Fragment {
                            final TableLayout gameField) {
         imageView.setImageResource(R.drawable.empty);
         imageView.setOnClickListener(new View.OnClickListener() {
-            private void checkWin() {
+            private boolean checkWin() {
                 TicTacToeGameLogic.Player winner = logic.getWinner();
                 if (winner != null) {
                     String text;
@@ -77,7 +77,9 @@ public class TicTacToeGameFragment extends Fragment {
                     logic.changeScore(winner, tracker);
                     Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
                     getActivity().onBackPressed();
+                    return true;
                 }
+                return false;
             }
 
             @Override
@@ -86,7 +88,9 @@ public class TicTacToeGameFragment extends Fragment {
 
                     // outsource to fkt.
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
-                    checkWin();
+                    if(checkWin()) {
+                        return;
+                    }
                     logic.autoplayerTurn();
                     for (int y = 0; y < gameField.getChildCount(); y++) {
                         final TableRow currentRow = (TableRow) gameField.getChildAt(y);
