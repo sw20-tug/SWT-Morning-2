@@ -7,6 +7,7 @@
     <string name="start_game">Start game</string>
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
+    <string name="hangman_menu_fragment_label">Hangman Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
     <string name="ttt_text_color_p1">Color Selection</string>
 
@@ -47,6 +48,8 @@
     <string name="hangman_toast_remove_standard_word">Can not delete standard word</string>
     <string name="hangman_word_list_toggle_on">Hide word list</string>
     <string name="hangman_word_list_toggle_off">Show word list</string>
+    <string name="hangman_hint_button_text">Hint</string>
+
 
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>

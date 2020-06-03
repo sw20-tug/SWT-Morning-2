@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/ttt_menu_button"
+        android:id="@+id/hangmanStartGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"

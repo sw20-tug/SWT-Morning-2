@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/HangmanMenuFragment"
         android:name="com.swt20.swt_morning2.HangmanMenuFragment"
-        android:label="@string/ttt_menu_fragment_label"
+        android:label="@string/hangman_menu_fragment_label"
         tools:layout="@layout/hangman_menu">
 
         <action
