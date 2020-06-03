@@ -58,6 +58,10 @@ public class TicTacToeGameLogic {
         }
     }
 
+    public TicTacToeGameLogic(int firstPlayerResId, int secondPlayerResId) {
+        this(firstPlayerResId, secondPlayerResId, false);
+    }
+
     private boolean assignCell(int x, int y, Player currentPlayer) {
         Cell currentCell = getCell(x, y);
         if (currentCell == null) {
