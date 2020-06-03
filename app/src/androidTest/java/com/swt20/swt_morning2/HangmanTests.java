@@ -3,6 +3,7 @@ package com.swt20.swt_morning2;
 import android.app.Activity;
 import android.view.View;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -30,6 +31,8 @@ import static org.hamcrest.core.StringContains.containsString;
 @RunWith(AndroidJUnit4.class)
 public class HangmanTests {
 
+    private final static String TAG = HangmanTests.class.getSimpleName();
+
     @Rule
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
@@ -43,7 +46,7 @@ public class HangmanTests {
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
-        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
         String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
             "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         for (String str : letters) {
@@ -86,7 +89,7 @@ public class HangmanTests {
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
-        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
 
         String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
             "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -116,7 +119,7 @@ public class HangmanTests {
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
-        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
 
         String letter = "y";
 
@@ -146,7 +149,7 @@ public class HangmanTests {
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
-        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
 
         String letter = "a";
 
@@ -166,6 +169,35 @@ public class HangmanTests {
             }
         }
         assertThat(false, is(true));
+    }
+
+    @Test
+    public void playGameWithOnlyHints() {
+        Activity activity = activityRule.getActivity();
+        ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
+        Integer oldScore = st.getScore(Game.HANGMAN);
+        // Go from Main Menu to Hangman Menu
+        onView(withId(R.id.hangmanButton)).perform(click());
+
+        // Go from Hangman Menu to Game
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
+
+        for (int i = 0; i < 20; i++) {
+            onView(withId(R.id.button_hangman_hint)).perform(click());
+            try {
+                onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
+                ScoreTracker finalScore = new ScoreTracker(activity.getApplicationContext());
+                assertThat(finalScore.getScore(Game.HANGMAN), is(oldScore - 2));
+                oldScore = finalScore.getScore(Game.HANGMAN);
+                break;
+            } catch (AssertionError assertionError) {
+                ScoreTracker newScore = new ScoreTracker(activity.getApplicationContext());
+                assertThat(newScore.getScore(Game.HANGMAN), is(oldScore - 3));
+                oldScore = newScore.getScore(Game.HANGMAN);
+            }
+        }
+        Espresso.pressBackUnconditionally();
+        onView(withId(R.id.hangmanStartGameButton)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -242,7 +274,7 @@ public class HangmanTests {
         onView(withId(R.id.hangmanButton)).perform(click());
 
         // Go from Hangman Menu to Game
-        onView(withId(R.id.ttt_menu_button)).perform(click());
+        onView(withId(R.id.hangmanStartGameButton)).perform(click());
         String letter = "a";
         for (int i = 0; i <= 9; i++) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
