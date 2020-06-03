@@ -46,19 +46,19 @@
         app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView_word2guess"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.479" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
         android:text="@string/hangman_question_guess"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/plainText_nextChar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_word2guess"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <ImageView
         android:id="@+id/feedbackView"
@@ -77,6 +77,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_hangman_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hangman_hint_button_text"
+        app:layout_constraintBottom_toTopOf="@+id/button_playagain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_word2guess" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
