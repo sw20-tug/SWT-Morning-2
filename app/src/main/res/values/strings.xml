@@ -7,7 +7,9 @@
     <string name="start_game">Start game</string>
 
     <string name="ttt_menu_fragment_label">TTT Menu</string>
+    <string name="hangman_menu_fragment_label">Hangman Menu</string>
     <string name="ttt_game_fragment_label">TTT Game</string>
+    <string name="ttt_text_color_p1">Color Selection</string>
 
 
     <string name="welcome_screen_headline">Games Collection</string>
@@ -15,6 +17,7 @@
     <string name="hangman_text">Hangman</string>
     <string name="white_tiles_text">Don\'t touch the white tiles</string>
     <string name="game_score">Score: </string>
+    <string name="auto_player">Auto-player as opponent</string>
 
     <string name="tic_tac_toe_image">Tic Tac Toe</string>
     <string name="hang_man_image">Hangman</string>
@@ -29,12 +32,33 @@
     <string name="tic_tac_toe_7">TicTacToe7</string>
     <string name="tic_tac_toe_8">TicTacToe8</string>
     <string name="tic_tac_toe_9">TicTacToe9</string>
+
     <string name="hangman_question_guess">Enter your guess:</string>
     <string name="hangman_question_txt">guess?</string>
-    <string name="hangman_WIN">\"Congratulations. You won!\"</string>
+    <string name="hangman_WIN">Congratulations. You won!</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"fuchsia\",     \"jigsaw\",     \"jogging\",     \"jukebox\",     \"kilobyte\",     \"matrix\",     \"unworthy\",     \"schnapps\",     \"sphinx\",     \"bookworm\",     \"cryptography\",     \"razzmatazz\"    ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Play again</string>
+    <string name="hangman_add_word">Add Word</string>
+    <string name="hangman_remove_word">Remove Word</string>
+    <string name="hangman_input_word_text_hint">Input Word</string>
+    <string name="hangman_toast_add_successful">Word added successfully</string>
+    <string name="hangman_toast_add_failed">Word already in use</string>
+    <string name="hangman_toast_remove_successful">Word removed successfully</string>
+    <string name="hangman_toast_remove_failed">Word not found</string>
+    <string name="hangman_toast_remove_standard_word">Can not delete standard word</string>
+    <string name="hangman_word_list_toggle_on">Hide word list</string>
+    <string name="hangman_word_list_toggle_off">Show word list</string>
+    <string name="hangman_hint_button_text">Hint</string>
+
+
     <string name="you_win">You win!</string>
     <string name="you_lose">You lose!</string>
+    <string name="tiles_menu_fragment_label">Dont touch the white tiles</string>
+    <string name="hangman_lose">Congratulations. You lost!</string>
+    <string name="imageViewDescription">This is the ImageView for the user feedback</string>
+    <string name="white_tiles_timer">Timer</string>
+    <string name="white_tiles_time">Time in seconds</string>
+    <string name="white_tiles_time_hint">Set Timer</string>
+    <string name="white_tiles_remaining_time">Remaining Time</string>
 
 </resources>

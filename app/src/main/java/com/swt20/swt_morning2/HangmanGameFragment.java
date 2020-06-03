@@ -1,5 +1,7 @@
 package com.swt20.swt_morning2;
 
+import android.app.Application;
+import android.app.ApplicationErrorReport;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,10 +45,12 @@ public class HangmanGameFragment extends Fragment {
     private TextView nextChar;
     private TextView textView;
     private String word2guess;
-    private String word2guess_viewtext = "";
+    private String word2guessViewtext = "";
     private TextView textViewWord2Guess;
-    private WordList wordList;
-    private SharedPreferences sharedPreferences;
+    private WordListWrapper.WordList wordList;
+    private Integer tryCounter;
+    private List<Character> tryedCharacters;
+    private ImageView feedbackView;
 
     @Override
     public View onCreateView(
@@ -53,48 +58,60 @@ public class HangmanGameFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-
-        String lang = Locale.getDefault().getDisplayLanguage();
-        if(lang.contains("de"))
-        {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_DE", 0);
-        } else {
-            sharedPreferences = requireContext().getSharedPreferences("HANGMAN_WORDS_EN", 0);
-        }
-        String wordsJson = sharedPreferences.getString("WORDS",getString(R.string.hangman_default_words));
-        Gson gson = new Gson();
-        wordList = gson.fromJson(wordsJson, WordList.class);
+        wordList = new WordListWrapper(this).wordList;
 
         return inflater.inflate(R.layout.hangman_game, container, false);
     }
 
-    public void onViewCreated(@NonNull final View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        nextChar = view.findViewById(R.id.plainText_nextChar);
-        textView = view.findViewById(R.id.textView);
+    @Override
+    public void onViewCreated(@NonNull final View mainView, Bundle savedInstanceState) {
+        super.onViewCreated(mainView, savedInstanceState);
+        nextChar = mainView.findViewById(R.id.plainText_nextChar);
+        textView = mainView.findViewById(R.id.textView);
         imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        textViewWord2Guess = view.findViewById(R.id.textView_word2guess);
+        textViewWord2Guess = mainView.findViewById(R.id.textView_word2guess);
+        tryCounter = 0;
+        tryedCharacters = new ArrayList<Character>();
+        feedbackView = mainView.findViewById(R.id.feedbackView);
         //TODO TCs
 
         word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
         for (int i = 0; i < word2guess.length(); i++) {
-            word2guess_viewtext += "_ ";
+            word2guessViewtext += "_ ";
         }
-        textViewWord2Guess.setText(word2guess_viewtext);
+        textViewWord2Guess.setText(word2guessViewtext);
 
-        view.findViewById(R.id.button_playagain).setOnClickListener(new View.OnClickListener() {
+        mainView.findViewById(R.id.button_playagain).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
-                    word2guess_viewtext = "";
-                    for (int i = 0; i < word2guess.length(); i++) {
-                        word2guess_viewtext += "_ ";
-                    }
-                    textViewWord2Guess.setText(word2guess_viewtext);
+                word2guess = wordList.getRandomWord().toUpperCase(Locale.getDefault());
+                word2guessViewtext = "";
+                for (int i = 0; i < word2guess.length(); i++) {
+                    word2guessViewtext += "_ ";
+                }
+                textViewWord2Guess.setVisibility(View.VISIBLE);
+                textViewWord2Guess.setText(word2guessViewtext);
                 textView.setVisibility(View.VISIBLE);
                 nextChar.setVisibility(View.VISIBLE);
+
                 view.findViewById(R.id.button_playagain).setVisibility(View.INVISIBLE);
+                feedbackView.setImageResource(0);
+                mainView.findViewById(R.id.button_hangman_hint).setVisibility(View.VISIBLE);
             }
+        });
+
+        mainView.findViewById(R.id.button_hangman_hint).setOnClickListener(view -> {
+            char chosenCharacter = ' ';
+            for (char character : word2guess.toCharArray()) {
+                if (!word2guessViewtext.contains("" + character)) {
+                    chosenCharacter = character;
+                    break;
+                }
+            }
+            addCharacter(chosenCharacter);
+            ScoreTracker st = new ScoreTracker(getContext().getApplicationContext());
+            st.reduceScore(Game.HANGMAN, 3);
+            checkWinCondition(mainView);
         });
 
         nextChar.addTextChangedListener(new TextWatcher() {
@@ -115,46 +132,98 @@ public class HangmanGameFragment extends Fragment {
                 if (chr == ' ') {
                     return;
                 }
-                if (word2guess.contains(Character.toString(chr))) {
-                    int idx = word2guess.indexOf(chr);
-                    StringBuilder newText = new StringBuilder(word2guess_viewtext);
-                    while (idx >= 0) {
-                        newText.setCharAt(idx * 2, chr);
-                        idx = word2guess.indexOf(chr, idx + 1);
+
+                if (word2guess.contains(Character.toString(chr))
+                        && !tryedCharacters.contains(chr)) {
+                    addCharacter(chr);
+                } else {
+                    tryCounter = tryCounter + 1;
+                    tryedCharacters.add(chr);
+                    switch (tryCounter) {
+                        case 1:
+                            feedbackView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                            feedbackView.setImageResource(R.drawable.hangman_1);
+                            break;
+                        case 2:
+                            feedbackView.setImageResource(R.drawable.hangman_2);
+                            break;
+                        case 3:
+                            feedbackView.setImageResource(R.drawable.hangman_3);
+                            break;
+                        case 4:
+                            feedbackView.setImageResource(R.drawable.hangman_4);
+                            break;
+                        case 5:
+                            feedbackView.setImageResource(R.drawable.hangman_5);
+                            break;
+                        case 6:
+                            feedbackView.setImageResource(R.drawable.hangman_6);
+                            break;
+                        case 7:
+                            feedbackView.setImageResource(R.drawable.hangman_7);
+                            break;
+                        case 8:
+                            feedbackView.setImageResource(R.drawable.hangman_8);
+                            break;
+                        default:
+                            feedbackView.setImageResource(0);
                     }
-                    word2guess_viewtext = newText.toString();
-                    textViewWord2Guess.setText(word2guess_viewtext);
+                    //todo maybe add used wrong elements to a list for the user
                 }
                 nextChar.setText("");
 
-                String result = word2guess_viewtext.replace(" ", "");
-                if (word2guess.equalsIgnoreCase(result)) {
-                    ScoreTracker st = new ScoreTracker(getContext());
-                    st.addScore(Game.HANGMAN, 1);
-                    Toast.makeText(getContext(), getString(R.string.hangman_WIN), Toast.LENGTH_LONG).show();
-
-                    view.findViewById(R.id.button_playagain).setVisibility(View.VISIBLE);
-                    textView.setVisibility(View.INVISIBLE);
-                    nextChar.setVisibility(View.INVISIBLE);
-
-                }
+                checkWinCondition(mainView);
             }
         });
 
         nextChar.requestFocus();
         imgr.showSoftInput(nextChar, InputMethodManager.SHOW_IMPLICIT);
+
     }
 
-    public class WordList {
-        public List<String> standardWords;
-        public List<String> customWords;
+    private void addCharacter(char newChar) {
+        int idx = word2guess.indexOf(newChar);
+        StringBuilder newText = new StringBuilder(word2guessViewtext);
+        while (idx >= 0) {
+            newText.setCharAt(idx * 2, newChar);
+            idx = word2guess.indexOf(newChar, idx + 1);
+        }
+        word2guessViewtext = newText.toString();
+        textViewWord2Guess.setText(word2guessViewtext);
+    }
 
-        public String getRandomWord() {
-            List<String> tmpList = new ArrayList<String>();
-            tmpList.addAll(standardWords);
-            tmpList.addAll(customWords);
-            Random rand = new Random();
-            return tmpList.get(rand.nextInt(tmpList.size()));
+    private void checkWinCondition(@NonNull View view) {
+        String result = word2guessViewtext.replace(" ", "");
+        if (word2guess.equalsIgnoreCase(result)) {
+            gameFinished(1, getString(R.string.hangman_WIN), view);
+        }
+        if (tryCounter >= 8) {
+            gameFinished(-2, getString(R.string.hangman_lose), view);
         }
     }
+
+    private void gameFinished(int points, String text, View view) {
+
+        // todo disable text input on game finished, close keyboard if open
+        ScoreTracker st = new ScoreTracker(getContext().getApplicationContext());
+        st.addScore(Game.HANGMAN, points);
+        //String scoreText = Integer.toString(st.getScore(Game.HANGMAN));
+
+        imgr.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
+        //Toast.makeText(getContext(), scoreText, Toast.LENGTH_LONG).show();
+        if (points == 1) {
+            Toast.makeText(getContext(), getString(R.string.hangman_WIN), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getContext(),
+                    getString(R.string.hangman_lose), Toast.LENGTH_LONG).show();
+        }
+        tryCounter = 0;
+        tryedCharacters.clear();
+        view.findViewById(R.id.button_playagain).setVisibility(View.VISIBLE);
+        textView.setVisibility(View.INVISIBLE);
+        nextChar.setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.button_hangman_hint).setVisibility(View.INVISIBLE);
+        textViewWord2Guess.setVisibility(View.INVISIBLE);
+    }
+
 }

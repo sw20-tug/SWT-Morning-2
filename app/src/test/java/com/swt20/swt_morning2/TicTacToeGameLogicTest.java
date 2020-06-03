@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -59,11 +60,11 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkHorizontalWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(0,0));
-        Assert.assertTrue(logic.turn(0,1));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(2,0));
+        Assert.assertTrue(logic.turn(0, 0));
+        Assert.assertTrue(logic.turn(0, 1));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(2, 0));
         Assert.assertNotNull(logic.getWinner());
         scoreChangedBy(logic, 1);
     }
@@ -71,11 +72,11 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkVerticalWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(0,0));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(0,1));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(0,2));
+        Assert.assertTrue(logic.turn(0, 0));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(0, 1));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(0, 2));
         Assert.assertNotNull(logic.getWinner());
         scoreChangedBy(logic, 1);
     }
@@ -83,11 +84,11 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkCrossWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(0,0));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(1,2));
-        Assert.assertTrue(logic.turn(2,2));
+        Assert.assertTrue(logic.turn(0, 0));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(1, 2));
+        Assert.assertTrue(logic.turn(2, 2));
         Assert.assertNotNull(logic.getWinner());
         scoreChangedBy(logic, 1);
     }
@@ -95,11 +96,11 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkSecondCrossWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(2,0));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(1,2));
-        Assert.assertTrue(logic.turn(0,2));
+        Assert.assertTrue(logic.turn(2, 0));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(1, 2));
+        Assert.assertTrue(logic.turn(0, 2));
         Assert.assertNotNull(logic.getWinner());
         scoreChangedBy(logic, 1);
     }
@@ -107,12 +108,12 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkVerticalLose() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(0,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(0,1));
-        Assert.assertTrue(logic.turn(2,2));
-        Assert.assertTrue(logic.turn(0,2));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(0, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(0, 1));
+        Assert.assertTrue(logic.turn(2, 2));
+        Assert.assertTrue(logic.turn(0, 2));
         Assert.assertNotNull(logic.getWinner());
         scoreChangedBy(logic, -2);
     }
@@ -121,7 +122,7 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkSimpleNoWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(0,0));
+        Assert.assertTrue(logic.turn(0, 0));
         Assert.assertNull(logic.getWinner());
         scoreChangedBy(logic, 0);
     }
@@ -129,10 +130,10 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkNoWinnerSemiFullBoard() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(2,0));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(1,2));
+        Assert.assertTrue(logic.turn(2, 0));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(1, 2));
         Assert.assertNull(logic.getWinner());
         scoreChangedBy(logic, 0);
     }
@@ -148,15 +149,15 @@ public class TicTacToeGameLogicTest {
     @Test
     public void checkFullBoardNoWinner() {
         TicTacToeGameLogic logic = new TicTacToeGameLogic(0, 1);
-        Assert.assertTrue(logic.turn(0,0));
-        Assert.assertTrue(logic.turn(1,0));
-        Assert.assertTrue(logic.turn(1,1));
-        Assert.assertTrue(logic.turn(2,2));
-        Assert.assertTrue(logic.turn(0,2));
-        Assert.assertTrue(logic.turn(0,1));
-        Assert.assertTrue(logic.turn(1,2));
-        Assert.assertTrue(logic.turn(2,0));
-        Assert.assertTrue(logic.turn(2,1));
+        Assert.assertTrue(logic.turn(0, 0));
+        Assert.assertTrue(logic.turn(1, 0));
+        Assert.assertTrue(logic.turn(1, 1));
+        Assert.assertTrue(logic.turn(2, 2));
+        Assert.assertTrue(logic.turn(0, 2));
+        Assert.assertTrue(logic.turn(0, 1));
+        Assert.assertTrue(logic.turn(1, 2));
+        Assert.assertTrue(logic.turn(2, 0));
+        Assert.assertTrue(logic.turn(2, 1));
         Assert.assertNull(logic.getWinner());
         scoreChangedBy(logic, 0);
     }
@@ -165,7 +166,7 @@ public class TicTacToeGameLogicTest {
         ScoreTracker st = new ScoreTracker(context);
         st.setScore(Game.TICTACTOE, 42);
         logic.changeScore(logic.getWinner(), st);
-        Assert.assertEquals(42 + change, st.getScore(Game.TICTACTOE));
+        verify(sharedprefeditor).putInt(eq("TICTACTOE_SCORE"), eq(42 + change));
     }
 
 }

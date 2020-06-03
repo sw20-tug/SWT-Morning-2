@@ -6,8 +6,10 @@
 
     <string name="start_game">Spiel starten</string>
 
-    <string name="ttt_menu_fragment_label">TTT Menu</string>
-    <string name="ttt_game_fragment_label">TTT Game</string>
+    <string name="ttt_menu_fragment_label">TTT Menü</string>
+    <string name="hangman_menu_fragment_label">Hangman Menü</string>
+    <string name="ttt_game_fragment_label">TTT Spiel</string>
+    <string name="ttt_text_color_p1">Farbauswahl</string>
 
     <string name="welcome_screen_headline">Spiele Sammlung</string>
     <string name="tic_tac_toe_text">TicTacToe</string>
@@ -17,6 +19,8 @@
     <string name="tic_tac_toe_image">Tic Tac Toe</string>
     <string name="hang_man_image">Hangman</string>
     <string name="white_tiles_image">White Tiles</string>
+    <string name="auto_player">Computerspieler als Gegner</string>
+
 
     <string name="tic_tac_toe_1">TicTacToe1</string>
     <string name="tic_tac_toe_2">TicTacToe2</string>
@@ -33,6 +37,27 @@
     <string name="hangman_WIN">Gratuliere, du hast das Wort erraten!</string>
     <string name="hangman_default_words">{   \"standardWords\": [     \"Test\",     \"Apfelbaum\",     \"Auto\",     \"Mensch\",     \"Chrysantheme\",     \"Kernspintomografie\",     \"Zucchini\",     \"Rueckgrat\",     \"unentgeltlich\",     \"Verlies\",     \"Terrasse\",     \"Quarzuhr\"   ],   \"customWords\": [   ] }</string>
     <string name="hangman_playagain">Nochmal spielen</string>
+    <string name="hangman_add_word">Wort Hinzufügen</string>
+    <string name="hangman_remove_word">Wort Entfernen</string>
+    <string name="hangman_input_word_text_hint">Wort Eingeben</string>
+    <string name="hangman_toast_add_successful">Wort erfolgreich hinzugefügt</string>
+    <string name="hangman_toast_add_failed">Wort bereits vorhanden</string>
+    <string name="hangman_toast_remove_successful">Wort erfolgreich entfernt</string>
+    <string name="hangman_toast_remove_failed">Wort nicht vorhanden</string>
+    <string name="hangman_toast_remove_standard_word">Standard Wörter können nicht entfernt werden</string>
+    <string name="hangman_word_list_toggle_on">Wörter ausblenden</string>
+    <string name="hangman_word_list_toggle_off">Wörter anzeigen</string>
+    <string name="hangman_hint_button_text">Hinweis</string>
+
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>
+
+    <string name="tiles_menu_fragment_label">Nicht die weißen Felder berühren</string>
+    <string name="hangman_lose">Gratuliere, du hast das Wort nicht erraten!</string>
+    <string name="imageViewDescription">Dies ist das Feedback Bild für den user</string>
+    <string name="white_tiles_timer">Timer</string>
+    <string name="white_tiles_time">Zeit in Sekunden</string>
+    <string name="white_tiles_time_hint">Zeit eingeben</string>
+    <string name="white_tiles_remaining_time">Verbleibende Zeit</string>
+
 </resources>

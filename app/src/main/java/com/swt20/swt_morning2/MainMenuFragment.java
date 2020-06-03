@@ -52,7 +52,6 @@ public class MainMenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "hangman button pressed");
-                // todo start appropriate game later
                 NavHostFragment.findNavController(com.swt20.swt_morning2.MainMenuFragment.this)
                         .navigate(R.id.action_mainMenuFragment_to_HangmanMenu);
             }
@@ -63,9 +62,8 @@ public class MainMenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "white tiles button pressed");
-                // todo start appropriate game later
-                //NavHostFragment.findNavController(com.swt20.swt_morning2.MainMenuFragment.this)
-                //        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                NavHostFragment.findNavController(com.swt20.swt_morning2.MainMenuFragment.this)
+                        .navigate(R.id.action_mainMenuFragment_to_TilesMenu);
             }
         });
     }
