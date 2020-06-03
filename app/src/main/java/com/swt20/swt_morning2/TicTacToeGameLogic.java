@@ -79,13 +79,15 @@ public class TicTacToeGameLogic {
         return validPlay;
     }
 
+
+    /** For checkstyl.
+     */
     public void autoplayerTurn() {
         if (turnCount >= 9 || !this.autoplayer) {
             return;
         }
-        int x;
-        int y;
         boolean winnchance = true;
+        int tryStep = 0;
         outer:
         do {
             //check ROWS
@@ -165,12 +167,88 @@ public class TicTacToeGameLogic {
                     }
                 }
             }
-
-
             winnchance = false;
-            x = ThreadLocalRandom.current().nextInt(0, 2 + 1);
-            y = ThreadLocalRandom.current().nextInt(0, 2 + 1);
-        } while (!assignCell(x, y, second));
+
+            //first try to set middle point
+            if (tryStep == 0) {
+                tryStep++;
+                if (assignCell(1, 1, second)) {
+                    break outer;
+                }
+            } else if (tryStep == 1) {
+                //try edges
+                tryStep++;
+
+                if (cells[0][0].getOwner() == null
+                        || cells[0][2].getOwner() == null
+                        || cells[2][0].getOwner() == null
+                        || cells[2][2].getOwner() == null) {
+                    inner:
+                    do {
+                        switch (ThreadLocalRandom.current().nextInt(0, 3 + 1)) {
+                            case 0:
+                                if (assignCell(0, 0, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 1:
+                                if (assignCell(0, 2, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 2:
+                                if (assignCell(2, 0, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 3:
+                                if (assignCell(2, 2, second)) {
+                                    break outer;
+                                }
+                                break;
+                            default:
+                                break inner;
+                        }
+                    } while (true);
+                }
+            } else if (tryStep == 2) {
+                //try rest
+                tryStep++;
+
+                if (cells[0][1].getOwner() == null
+                        || cells[1][0].getOwner() == null
+                        || cells[1][2].getOwner() == null
+                        || cells[2][1].getOwner() == null) {
+                    inner:
+                    do {
+                        switch (ThreadLocalRandom.current().nextInt(0, 3 + 1)) {
+                            case 0:
+                                if (assignCell(0, 1, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 1:
+                                if (assignCell(1, 0, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 2:
+                                if (assignCell(1, 2, second)) {
+                                    break outer;
+                                }
+                                break;
+                            case 3:
+                                if (assignCell(2, 1, second)) {
+                                    break outer;
+                                }
+                                break;
+                            default:
+                                break inner;
+                        }
+                    } while (true);
+                }
+            }
+        } while (true);
         turnCount++;
     }
 
