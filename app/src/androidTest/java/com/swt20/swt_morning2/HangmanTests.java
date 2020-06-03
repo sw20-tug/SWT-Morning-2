@@ -73,12 +73,14 @@ public class HangmanTests {
                 }
                 assertThat(st.getScore(Game.HANGMAN), is(oldScore + 1));
                 return;
-            } catch (Exception e) {
+            } catch (AssertionError e) {
                 // View not displayed
             }
         }
         assert (false);
     }
+
+
 
     @Test
     public void playGameTwice() {
@@ -102,7 +104,7 @@ public class HangmanTests {
                     } else {
                         return;
                     }
-                } catch (Exception e) {
+                } catch (AssertionError e) {
                     // View not displayed
                 }
             }
@@ -133,7 +135,7 @@ public class HangmanTests {
                         matches(withDrawable(R.drawable.hangman_1)));
                 return;
                 // View displayed
-            } catch (Exception e) {
+            } catch (AssertionError e) {
                 // View not displayed
             }
         }
@@ -154,15 +156,10 @@ public class HangmanTests {
         for (int i = 0; i < 12; i++) {
             onView(withId(R.id.plainText_nextChar)).perform(typeText(letter));
             try {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    // View not displayed
-                }
                 onView(withId(R.id.button_playagain)).check(matches(isDisplayed()));
                 return;
                 // View displayed
-            } catch (Exception e) {
+            } catch (AssertionError e) {
                 // View not displayed
             }
         }
@@ -262,6 +259,7 @@ public class HangmanTests {
 
     }
 
+    @Test
     public void scoreReduced() {
         Activity activity = activityRule.getActivity();
         ScoreTracker st = new ScoreTracker(activity.getApplicationContext());
@@ -282,7 +280,7 @@ public class HangmanTests {
                 onView(isRoot()).perform(pressBack());
                 // View displayed
                 break;
-            } catch (Exception e) {
+            } catch (AssertionError e) {
                 // View not displayed
             }
         }

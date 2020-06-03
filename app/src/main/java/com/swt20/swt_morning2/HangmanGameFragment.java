@@ -89,9 +89,11 @@ public class HangmanGameFragment extends Fragment {
                 for (int i = 0; i < word2guess.length(); i++) {
                     word2guessViewtext += "_ ";
                 }
+                textViewWord2Guess.setVisibility(View.VISIBLE);
                 textViewWord2Guess.setText(word2guessViewtext);
                 textView.setVisibility(View.VISIBLE);
                 nextChar.setVisibility(View.VISIBLE);
+
                 view.findViewById(R.id.button_playagain).setVisibility(View.INVISIBLE);
                 feedbackView.setImageResource(0);
                 mainView.findViewById(R.id.button_hangman_hint).setVisibility(View.VISIBLE);
@@ -221,7 +223,7 @@ public class HangmanGameFragment extends Fragment {
         textView.setVisibility(View.INVISIBLE);
         nextChar.setVisibility(View.INVISIBLE);
         view.findViewById(R.id.button_hangman_hint).setVisibility(View.INVISIBLE);
-
+        textViewWord2Guess.setVisibility(View.INVISIBLE);
     }
 
 }
