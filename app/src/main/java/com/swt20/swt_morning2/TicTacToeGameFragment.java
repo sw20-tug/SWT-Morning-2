@@ -88,7 +88,7 @@ public class TicTacToeGameFragment extends Fragment {
 
                     // outsource to fkt.
                     imageView.setImageResource(logic.getCell(x, y).getOwner().getResId());
-                    if(checkWin()) {
+                    if (checkWin()) {
                         return;
                     }
                     logic.autoplayerTurn();
