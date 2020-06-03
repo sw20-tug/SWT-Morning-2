@@ -7,6 +7,7 @@
     <string name="start_game">Spiel starten</string>
 
     <string name="ttt_menu_fragment_label">TTT Menü</string>
+    <string name="hangman_menu_fragment_label">Hangman Menü</string>
     <string name="ttt_game_fragment_label">TTT Spiel</string>
     <string name="ttt_text_color_p1">Farbauswahl</string>
 
@@ -46,6 +47,7 @@
     <string name="hangman_toast_remove_standard_word">Standard Wörter können nicht entfernt werden</string>
     <string name="hangman_word_list_toggle_on">Wörter ausblenden</string>
     <string name="hangman_word_list_toggle_off">Wörter anzeigen</string>
+    <string name="hangman_hint_button_text">Hinweis</string>
 
     <string name="you_win">Du gewinnst!</string>
     <string name="you_lose">Du verlierst!</string>
