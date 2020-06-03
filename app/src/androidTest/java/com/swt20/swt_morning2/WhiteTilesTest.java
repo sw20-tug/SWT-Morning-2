@@ -5,8 +5,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.action.ViewActions;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -68,6 +71,38 @@ public class WhiteTilesTest {
         int oldScore = st.getScore(Game.TILES);
         onView(withId(whiteButton.getId())).perform(click());
         Assert.assertEquals(oldScore + 1, st.getScore(Game.TILES));
+    }
+
+    @Test
+    public void testTimerDisabled() {
+        onView(withId(R.id.whiteTilesButton)).perform(click());
+        //swipeLeft toggles the switch, only do it if it is enabled!
+        if (((Switch) (activityRule.getActivity()
+                .findViewById(R.id.whiteTilesTimerSwitch))).isChecked()) {
+            onView(withId(R.id.whiteTilesTimerSwitch)).perform(ViewActions.swipeLeft());
+        }
+        onView(withId(R.id.tiles_menu_button)).perform(click());
+        TextView timeText = activityRule.getActivity().findViewById(R.id.whiteTilesTimeText);
+        TextView remainingTimeText = activityRule.getActivity()
+                .findViewById(R.id.whiteTilesRemainingTime);
+        Assert.assertEquals("", timeText.getText().toString());
+        Assert.assertEquals("", remainingTimeText.getText().toString());
+    }
+
+    @Test
+    public void testTimerEnabled() {
+        onView(withId(R.id.whiteTilesButton)).perform(click());
+        if (!((Switch) (activityRule.getActivity()
+                .findViewById(R.id.whiteTilesTimerSwitch))).isChecked()) {
+            onView(withId(R.id.whiteTilesTimerSwitch)).perform(ViewActions.swipeRight());
+        }
+        onView(withId(R.id.tiles_menu_button)).perform(click());
+        TextView timeText = activityRule.getActivity().findViewById(R.id.whiteTilesTimeText);
+        TextView remainingTimeText = activityRule.getActivity()
+                .findViewById(R.id.whiteTilesRemainingTime);
+        Assert.assertTrue(Integer.parseInt(remainingTimeText.getText().toString()) >= 1);
+        Assert.assertEquals("Remaining Time", timeText.getText().toString());
+
     }
 
     public View getButtonWithColor(Integer color) {
